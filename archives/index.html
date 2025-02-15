@@ -55,7 +55,7 @@
       
 
 
-<div class="overlay" style="background: #4d4d4d;"></div>
+<div class="overlay" style="background: #4d4d4d;background: url('/img/biubiubiu.gif') no-repeat ;"></div>
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
@@ -225,7 +225,71 @@
     <header class="archive-article-header">
       	<div class="article-meta">
 	      	
-<a href="/2025/02/05/1.26-2.5%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/" class="archive-article-date">
+<a href="/2025/02/12/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/" class="archive-article-date">
+        <time datetime="2025-02-12T15:27:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-02-12</time>
+</a>
+
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+	
+	  <a class="archive-article-title" href="/2025/02/12/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/" target="_blank">文件上传漏洞一些wp</a>
+  
+    </h1>
+  
+
+
+        <div class="article-info info-on-right">
+          
+          
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	
+<a href="/2025/02/08/php/" class="archive-article-date">
+        <time datetime="2025-02-08T04:30:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-02-08</time>
+</a>
+
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+	
+	  <a class="archive-article-title" href="/2025/02/08/php/" target="_blank">php</a>
+  
+    </h1>
+  
+
+
+        <div class="article-info info-on-right">
+          
+          
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	
+<a href="/2025/02/05/SQL%E6%B3%A8%E5%85%A5/" class="archive-article-date">
         <time datetime="2025-02-05T11:13:32.311Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-02-05</time>
 </a>
 
@@ -249,7 +313,7 @@
     <header class="archive-article-header">
       	<div class="article-meta">
 	      	
-<a href="/2025/01/24/1-24%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/" class="archive-article-date">
+<a href="/2025/01/24/xss/" class="archive-article-date">
         <time datetime="2025-01-24T14:14:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-01-24</time>
 </a>
 
@@ -258,7 +322,7 @@
   
     <h1 itemprop="name">
 	
-	  <a class="archive-article-title" href="/2025/01/24/1-24%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/" target="_blank">1.24学习日记</a>
+	  <a class="archive-article-title" href="/2025/01/24/xss/" target="_blank">xss</a>
   
     </h1>
   
@@ -653,6 +717,35 @@
   </div>
 
   
+<script type="text/javascript" src="/plugins/TweenMax/TweenMax.min.js"></script>
+<script type="text/javascript" src="/plugins/TweenMax/HoverImg.js"></script>
+
+<script>
+
+
+  var hoverEffect = {
+    "subNav": ".left-col .social a"
+  }
+
+
+  for (var x in hoverEffect) {
+    // 初始化data-img属性值
+    let $em = document.querySelectorAll(hoverEffect[x]);
+    $em.forEach(($a) => {
+      //console.log($a.href);
+      if (isImageType($a.href)) {
+        $a.setAttribute("data-img", $a.href)
+      }
+    })
+    // 实现悬停元素预览图片效果
+    let $a = document.querySelectorAll(hoverEffect[x] + "[data-img]");
+    $a.forEach(($em) => {
+      new HoverImgFx1($em)
+    })
+  }
+
+</script>
+
   
 <script type="text/javascript" src="/plugins/activate-power-mode/activate-power-mode.js"></script>
 <script>
