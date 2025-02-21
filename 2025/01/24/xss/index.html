@@ -18,7 +18,7 @@
 <meta property="og:description" content="今天学了点xss一、xss攻击方式 反射型xss 非持久化，要点击事先制造好的攻击链接才能触发xss代码，一般出现在搜索界面。  储存型xss 持久化，代码是存储在服务器数据库中的，如在个人信息或发表文章等地方，加入代码，如果没有过滤或过滤不严，那么这些代码将储存到服务器中，每当有用户访问该页面的时候都会触发代码执行。  DOM型xss 基于文档对象模型Document Object Model，">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-01-24T14:14:35.000Z">
-<meta property="article:modified_time" content="2025-02-15T10:08:53.699Z">
+<meta property="article:modified_time" content="2025-02-21T18:13:57.910Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -244,7 +244,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">881字</span>
+      <span class="post-count">1.3k字</span>
     </span>
   </span>
 
@@ -253,7 +253,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">3分</span>
+      <span class="post-count">5分</span>
     </span>
   </span>
 </div>
@@ -344,6 +344,20 @@
 </li>
 </ol>
 <h5 id="一套码测测关键字："><a href="#一套码测测关键字：" class="headerlink" title="一套码测测关键字："></a>一套码测测关键字：</h5><p><code>&quot; sRc DaTa OnFocus &lt;sCriPt&gt; &lt;a hReF=javascript:alert()&gt; &amp;#106;</code></p>
+<h3 id="xss-labs题解"><a href="#xss-labs题解" class="headerlink" title="xss_labs题解"></a>xss_labs题解</h3><p>1.<code>&lt;scripr&gt;alert()&lt;/script&gt;</code>即可</p>
+<p>2.前面加<code>&quot;&gt;</code>将前面闭合然后alert即可</p>
+<p>3.单引号闭合，因为&gt;&lt;被实体化了，所有我们用伪协议绕过，<code>&#39; onfocus=javascript:alert() &#39;</code></p>
+<p>​	(onfocus再次点击触发)</p>
+<p>4.双引号闭合<code>&quot; onfocus=javascript:alert() &quot;</code></p>
+<p>5.这一关on被换成o_n，所有不能用伪协议，改用超链接<code>&quot;&gt; &lt;a href=javascript:alert()&gt;xxx&lt;/a&gt; &lt;&quot;</code>,再点击xxx即可</p>
+<p>6.大小写绕过 <code>&quot;&gt; &lt;sCript&gt;Alert()&lt;/sCript&gt; &lt;&quot;</code></p>
+<p>7.输入一串关键字看看 <code> Onfocus &lt;sCrIpt&gt; &lt;a href=javascript:alert()&gt;</code>,看传进去的参里没有href，script，on，这些词被过滤掉了，所有用双写绕过 <code>&quot;&gt; &lt;a hrhrefef=javasscriptcript:alert()&gt;xxx&lt;/a&gt; &lt;&quot;</code></p>
+<p>8.先传参123进入，发现插入两个地方，一个input，一个href，大概率是unicode编码，直接将 <code>javascript:alert()</code>编码后传入即可</p>
+<p>9.照例写个超链接看看，结果插入不成功，看源码，发现要插入指定内容（本题是http:&#x2F;&#x2F;）所以在后面加入http:&#x2F;&#x2F;再用注释符注释掉即可</p>
+<p>10.value隐藏了，只能去看看源码，发现是get传参t_sort,并过滤掉了&gt;&lt;号，不能闭合插入标签，能用onfocus，因为输入框被隐藏了，需要添加type&#x3D;”text”，构造payload <code>?t_sort&quot; onfocus=javascript:alert() type=&quot;text</code></p>
+<p>11.referer头，抓包添加<code>referer: &quot; sRc Date Onfocus &lt;sCript&gt; &lt;a hRef=javascript:alert()&gt; &amp;#106;</code>测一下，发现过滤掉了&gt;&lt; ,所有用onfocus，<code>Referer: &quot;onfocus=javascript:alert() type=&quot; text</code></p>
+<p>12.随便传参看看，发现value里是user-Agent的值，所有抓包改user-Agent，<code>&quot; onfocus=javascript:alert() type=&quot;text</code></p>
+<p>13.name是t_cook ,考虑是cookie头，F12找到cookie名为user，改user的value <code>&quot; onfocus=javascript:alert() type=&quot;text</code></p>
 
     
 
