@@ -214,6 +214,178 @@
             
 
   
+    <article id="post-ssti" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2025/04/26/ssti/" target="_blank">ssti</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2025/04/26/ssti/" class="archive-article-date">
+        <time datetime="2025-04-26T04:59:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-04-26</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h1 id="ssti模板注入"><a href="#ssti模板注入" class="headerlink" title="ssti模板注入"></a>ssti模板注入</h1><h3 id="漏洞成因："><a href="#漏洞成因：" class="headerlink" title="漏洞成因："></a>漏洞成因：</h3><p>服务端接收了用户的恶意输入后，未经任何处理就将其作为web应用模板内容的一部分，模板引擎<strong>在进行目标编译渲染的过程中，执行了用户插入的可以破坏模板的语句</strong>，因而可能导致了敏感信息泄露，代码执行，GetShell等问题。其影响范围主要取决于模板引擎的复杂性。</p>
+<p>同常规的 SQL 注入检测，XSS 检测一样，模板注入漏洞的检测也是向传递的参数中承载特定 Payload 并根据返回的内容来进行判断的。</p>
+<p>凡是使用模板的地方都可能会出现 SSTI 的问题，SSTI 不属于任何一种语言，沙盒绕过也不是，沙盒绕过只是由于模板引擎发现了很大的安全漏洞，然后模板引擎设计出来的一种防护机制，不允许使用没有定义或者声明的模块，这适用于所有的模板引擎。</p>
+    
+    <a class="article-more-a" href="/2025/04/26/ssti/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2025/04/26/ssti/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-RCE" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2025/04/11/RCE/" target="_blank">RCE</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2025/04/11/RCE/" class="archive-article-date">
+        <time datetime="2025-04-11T08:42:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-04-11</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h1 id="RCE"><a href="#RCE" class="headerlink" title="RCE"></a>RCE</h1><h4 id="rce漏洞："><a href="#rce漏洞：" class="headerlink" title="rce漏洞："></a>rce漏洞：</h4><p>在web应用开发中为了灵活性、简洁性等会让应用调用代码执行函数或系统命令执行函数处理，若应用对用户的输入过滤不严，容易产生远程代码执行漏洞或命令执行漏洞；</p>
+<h2 id="常见RCE漏洞函数"><a href="#常见RCE漏洞函数" class="headerlink" title="常见RCE漏洞函数"></a>常见RCE漏洞函数</h2><h3 id="远程命令执行（ping）函数："><a href="#远程命令执行（ping）函数：" class="headerlink" title="远程命令执行（ping）函数："></a>远程命令执行（ping）函数：</h3><p><strong>system()：将字符串作为OS命令执行，返回执行结果；</strong></p>
+<p>语法为<code>system(string $command, int &amp;$return var = ?)</code>，command: 执行 command 参数所指定的命令常用参数并且输出执行结果，如果提供 return var 参数，则外部命令执行后的返回状态将会被设置到此变量中。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">示例：system(&#x27;Is&#x27;)直接返回当前文件下的目录</span><br></pre></td></tr></table></figure>
+
+<p>exec()：将字符串作为OS命令执行，只返回执行结果的最后一行（约等于无回显；</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">示例：exec(&quot;cat/flag&quot;) 无回显</span><br></pre></td></tr></table></figure>
+
+<p>shell_exec() &#x2F; 反引号&#96;&#96;：将字符串作为OS命令执行；</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">示例：shell_exec(Is) / `Is` 无回显，用echo/print输出结果</span><br></pre></td></tr></table></figure>
+
+<p>passthru()：将字符串作为OS命令执行，能回显，system()平替；</p>
+<p>pcntl_exec()：在当前进程空间执行指定程序；</p>
+<p>popen() &#x2F; proc_open()：打开进程文件指针；</p>
+<h3 id="远程代码执行（evel）函数："><a href="#远程代码执行（evel）函数：" class="headerlink" title="远程代码执行（evel）函数："></a>远程代码执行（evel）函数：</h3><p><strong>eval() &#x2F; assert()：将字符串作为php代码执行；</strong></p>
+<p>preg_replace()：正则匹配替换字符串；</p>
+<p>create_function()：主要创建匿名函数；</p>
+<p>call_user_func()：回调函数，第一个参数为函数名，第二个参数为函数参数；</p>
+<p>call_user_func_array()：回调函数，第一个参数为函数名，第二个参数为函数参数的数组；</p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2025/04/11/RCE/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-SSRF服务器端请求伪造" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     

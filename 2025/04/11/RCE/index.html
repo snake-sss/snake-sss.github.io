@@ -6,15 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2025 | 佘雅晴のblog</title>
+  <title>RCE | 佘雅晴のblog</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta property="og:type" content="website">
-<meta property="og:title" content="佘雅晴のblog">
-<meta property="og:url" content="http://example.com/archives/2025/index.html">
+  <meta name="description" content="RCErce漏洞：在web应用开发中为了灵活性、简洁性等会让应用调用代码执行函数或系统命令执行函数处理，若应用对用户的输入过滤不严，容易产生远程代码执行漏洞或命令执行漏洞； 常见RCE漏洞函数远程命令执行（ping）函数：system()：将字符串作为OS命令执行，返回执行结果； 语法为system(string $command, int &amp;$return var &#x3D; ?)，comman">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RCE">
+<meta property="og:url" content="http://example.com/2025/04/11/RCE/index.html">
 <meta property="og:site_name" content="佘雅晴のblog">
+<meta property="og:description" content="RCErce漏洞：在web应用开发中为了灵活性、简洁性等会让应用调用代码执行函数或系统命令执行函数处理，若应用对用户的输入过滤不严，容易产生远程代码执行漏洞或命令执行漏洞； 常见RCE漏洞函数远程命令执行（ping）函数：system()：将字符串作为OS命令执行，返回执行结果； 语法为system(string $command, int &amp;$return var &#x3D; ?)，comman">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-04-11T08:42:57.000Z">
+<meta property="article:modified_time" content="2025-04-11T09:35:41.501Z">
 <meta property="article:author" content="snake&#39;blog">
 <meta name="twitter:card" content="summary">
   
@@ -207,342 +211,199 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-RCE" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2025" class="archive-year">2025</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2025/04/26/ssti/" class="archive-article-date">
-        <time datetime="2025-04-26T04:59:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-04-26</time>
-</a>
-
-        </div>
-    	 
+      <header class="article-header">
   
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2025/04/26/ssti/" target="_blank">ssti</a>
   
+    <h1 class="article-title" itemprop="name">
+      RCE
     </h1>
   
 
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
+  
+        
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
 <a href="/2025/04/11/RCE/" class="archive-article-date">
         <time datetime="2025-04-11T08:42:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-04-11</time>
 </a>
 
+  
+  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">403字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">1分</span>
+    </span>
+  </span>
+</div>
+
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h1 id="RCE"><a href="#RCE" class="headerlink" title="RCE"></a>RCE</h1><h4 id="rce漏洞："><a href="#rce漏洞：" class="headerlink" title="rce漏洞："></a>rce漏洞：</h4><p>在web应用开发中为了灵活性、简洁性等会让应用调用代码执行函数或系统命令执行函数处理，若应用对用户的输入过滤不严，容易产生远程代码执行漏洞或命令执行漏洞；</p>
+<h2 id="常见RCE漏洞函数"><a href="#常见RCE漏洞函数" class="headerlink" title="常见RCE漏洞函数"></a>常见RCE漏洞函数</h2><h3 id="远程命令执行（ping）函数："><a href="#远程命令执行（ping）函数：" class="headerlink" title="远程命令执行（ping）函数："></a>远程命令执行（ping）函数：</h3><p><strong>system()：将字符串作为OS命令执行，返回执行结果；</strong></p>
+<p>语法为<code>system(string $command, int &amp;$return var = ?)</code>，command: 执行 command 参数所指定的命令常用参数并且输出执行结果，如果提供 return var 参数，则外部命令执行后的返回状态将会被设置到此变量中。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">示例：system(&#x27;Is&#x27;)直接返回当前文件下的目录</span><br></pre></td></tr></table></figure>
+
+<p>exec()：将字符串作为OS命令执行，只返回执行结果的最后一行（约等于无回显；</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">示例：exec(&quot;cat/flag&quot;) 无回显</span><br></pre></td></tr></table></figure>
+
+<p>shell_exec() &#x2F; 反引号&#96;&#96;：将字符串作为OS命令执行；</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">示例：shell_exec(Is) / `Is` 无回显，用echo/print输出结果</span><br></pre></td></tr></table></figure>
+
+<p>passthru()：将字符串作为OS命令执行，能回显，system()平替；</p>
+<p>pcntl_exec()：在当前进程空间执行指定程序；</p>
+<p>popen() &#x2F; proc_open()：打开进程文件指针；</p>
+<h3 id="远程代码执行（evel）函数："><a href="#远程代码执行（evel）函数：" class="headerlink" title="远程代码执行（evel）函数："></a>远程代码执行（evel）函数：</h3><p><strong>eval() &#x2F; assert()：将字符串作为php代码执行；</strong></p>
+<p>preg_replace()：正则匹配替换字符串；</p>
+<p>create_function()：主要创建匿名函数；</p>
+<p>call_user_func()：回调函数，第一个参数为函数名，第二个参数为函数参数；</p>
+<p>call_user_func_array()：回调函数，第一个参数为函数名，第二个参数为函数参数的数组；</p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+
+    
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2025/04/11/RCE/" target="_blank">RCE</a>
-  
-    </h1>
-  
+      </div>
+    </span>
+  </div>
+</div>
 
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2025/04/11/RCE/" alt="微信分享二维码"> -->
+    </div>
+</div>
 
-        <div class="article-info info-on-right">
-          
-          
+<div class="mask js-mask"></div>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2025/04/07/SSRF%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E8%AF%B7%E6%B1%82%E4%BC%AA%E9%80%A0/" class="archive-article-date">
-        <time datetime="2025-04-07T15:27:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-04-07</time>
-</a>
 
+
+<nav id="article-nav">
+  
+    <a href="/2025/04/26/ssti/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          ssti
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/04/07/SSRF%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E8%AF%B7%E6%B1%82%E4%BC%AA%E9%80%A0/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">SSRF服务器端请求伪造</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2025/04/07/SSRF%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E8%AF%B7%E6%B1%82%E4%BC%AA%E9%80%A0/" target="_blank">SSRF服务器端请求伪造</a>
-  
-    </h1>
-  
+        
+        
+    </div>
+</aside>
 
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2025/02/12/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/" class="archive-article-date">
-        <time datetime="2025-02-12T15:27:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-02-12</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2025/02/12/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/" target="_blank">文件上传漏洞一些wp</a>
-  
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2025/02/08/php/" class="archive-article-date">
-        <time datetime="2025-02-08T04:30:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-02-08</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2025/02/08/php/" target="_blank">php</a>
-  
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2025/01/25/SQL%E6%B3%A8%E5%85%A5/" class="archive-article-date">
-        <time datetime="2025-01-25T09:50:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-01-25</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2025/01/25/SQL%E6%B3%A8%E5%85%A5/" target="_blank">SQL注入</a>
-  
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2025/01/24/xss/" class="archive-article-date">
-        <time datetime="2025-01-24T14:14:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-01-24</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2025/01/24/xss/" target="_blank">xss</a>
-  
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2025/01/24/http/" class="archive-article-date">
-        <time datetime="2025-01-24T09:46:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-01-24</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2025/01/24/http/" target="_blank">http</a>
-  
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2025/01/24/my-first-blog/" class="archive-article-date">
-        <time datetime="2025-01-23T16:12:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-01-24</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2025/01/24/my-first-blog/" target="_blank">my first blog</a>
-  
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2025/01/23/hello-world/" class="archive-article-date">
-        <time datetime="2025-01-23T09:42:56.451Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-01-23</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2025/01/23/hello-world/" target="_blank">Hello World</a>
-  
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -583,8 +444,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
