@@ -18,7 +18,7 @@
 <meta property="og:description" content="SSRF服务器端请求伪造SSRF形成原因是服务端提供了从其他服务器应用获取数据的功能且没有对目标地址做过滤与限制，比如从指定URL地址获取网页文本内容，加载指定地址的图片，下载等。 利用： 主要用来进行内网探测，也可以说是内网信息收集，存活主机和开放端口。  对外网服务器所在的内网进行端口扫描，获取一些服务的banner信息（如mysql版本等 有时候可攻击运行在内网或本地的应用程序，如通过ssr">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-04-07T15:27:08.000Z">
-<meta property="article:modified_time" content="2025-04-07T15:01:48.887Z">
+<meta property="article:modified_time" content="2025-07-10T07:14:31.438Z">
 <meta property="article:author" content="snake&#39;blog">
 <meta name="twitter:card" content="summary">
   
@@ -278,6 +278,7 @@
 
 <h2 id="1-SSRF利用相关的危险函数"><a href="#1-SSRF利用相关的危险函数" class="headerlink" title="1.SSRF利用相关的危险函数"></a>1.SSRF利用相关的危险函数</h2><h4 id="1）file-get-contents-和readfile"><a href="#1）file-get-contents-和readfile" class="headerlink" title="1）file_get_contents()和readfile()"></a>1）file_get_contents()和readfile()</h4><p>file_get_contents()：把传入的参数写入字符串，当传参是内网文件时，会先把这个文件写出来再写入，导致了任意文件读取，一般这种攻击与<strong>目录遍历</strong>相结合。</p>
 <p>（目录遍历？</p>
+<p>目录遍历：用..&#x2F;返回上级目录</p>
 <h3 id="2-fsockopen"><a href="#2-fsockopen" class="headerlink" title="2)fsockopen()"></a>2)fsockopen()</h3><p>fsockopen($hostname,$port,$errno,$errstr,$timeout)</p>
 <p>用于打开一个网络连接或一个Unix套接字连接，获取用户指定url数据，fsockopen()将返回一个文件句柄，之后可以被其他文件函数调用（如：fgets()，fwrite()，fclose()，feof() 如果调用失败，返回flase）</p>
 <h3 id="3）curl-exec"><a href="#3）curl-exec" class="headerlink" title="3）curl_exec()"></a>3）curl_exec()</h3><p>curl_init(url)函数初始化一个新的会话，返回一个cURL句柄，供curl_setopt()，curl_exec()和curl_close()函数使用</p>
