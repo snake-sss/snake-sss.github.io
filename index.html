@@ -330,52 +330,9 @@
 </ol>
 <h2 id="UDF提权"><a href="#UDF提权" class="headerlink" title="UDF提权"></a>UDF提权</h2><p>自定义函数，数据库功能的一种扩展。用户通过自定义函数可以实现在MySQL中无法方便实现的功能，其添加的新函数都可以在SQL中调用。</p>
 <p>提权有两种方法1.<code>手工复现</code>，2.<code>UDF shell</code></p>
-<h5 id="手工复现"><a href="#手工复现" class="headerlink" title="手工复现"></a>手工复现</h5><p>1.动态链接库</p>
-<p>若MySQL版本&gt;&#x3D;5.1,必须把UDF的动态链接库文件放置在MySQL安装目录下的lib\plugin文件夹下才能创建自定义函数。</p>
-<p><code>sqlmap</code>和<code>Metasploit</code>里面都自带对应系统的动态链接库文件</p>
-<p>sqlmap的UDF动态链接库的文件位置：</p>
-<blockquote>
-<p>sqlmap根目录&#x2F;data&#x2F;udf&#x2F;mysql</p>
-</blockquote>
-<p>注意！sqlmap中自带的这些动态链接库为了防止被误杀都经过编码处理过，不能被直接使用，可以利用sqlmap自带的解码工具cloak.py来解码使用。但是主播不会。。。所以我们拿别人解码后的来用嘿嘿</p>
-<p> [sqlmap udf.zip](&#x2F;files&#x2F;sqlmap udf.zip) </p>
-<p>Metasploit的UDF链接库文件位置：</p>
-<blockquote>
-<p>MSF 根目录&#x2F;embedded&#x2F;framework&#x2F;data&#x2F;exploits&#x2F;mysql</p>
-</blockquote>
-<p>（Metasploit自带的动态链接库文件无需解码，开箱即用</p>
-<p>2.寻找插件目录</p>
-<p>第二步就是把UDF动态链接库放在MySQL的插件目录下，用SQL语句寻找插件目录：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">show</span> variables <span class="keyword">like</span> <span class="string">&#x27;%plugin%&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<p>当然如果没有的话要手工创建<code>\lib\plugin</code>文件夹</p>
-<p>3.写入动态链接库</p>
-<p>经过以上准备，我们可以直接使用sqlmap来上传动态数据库，因为GET有字节长度限制，所以我们用POST注入</p>
-<p>这里直接偷一个别人的命令；</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u <span class="string">&quot;http://localhost:30008/&quot;</span> --data=<span class="string">&quot;id=1&quot;</span> --file-write=<span class="string">&quot;/Users/sec/Desktop/lib_mysqludf_sys_64.so&quot;</span> --file-dest=<span class="string">&quot;/usr/lib/mysql/plugin/udf.so&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>4.创建自定义函数并调用命令</p>
-<p><strong>只能创建so文件中存在的函数</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">CREATE</span> <span class="keyword">FUNCTION</span> sys_eval <span class="keyword">RETURNS</span> STRING SONAME <span class="string">&#x27;udf.dll&#x27;</span>;</span><br></pre></td></tr></table></figure>
-
-<p>导入成功后看一下MySQL函数里是否新增了sys_eval:</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> mysql.fuc;</span><br></pre></td></tr></table></figure>
-
-<p>成功后即可用这个函数来执行系统命令了，例：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">select</span> sys_eval(<span class="string">&#x27;whoami&#x27;</span>);</span><br></pre></td></tr></table></figure>
-
-<p>5.删除自定义函数</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">drop</span> <span class="keyword">function</span> sys_eval;</span><br></pre></td></tr></table></figure>
-
-<h5 id="UDF-shell"><a href="#UDF-shell" class="headerlink" title="UDF shell"></a>UDF shell</h5><p>若目标MySQL在内网下，无法直接连接或禁止外连，这时我们可以用一些网页脚本</p>
-<p>1.<code>UDF.php</code></p>
-<p><code>t00ls UDF.PHP</code>,一键DUMP UDF和函数</p>
-<p>2.<code>Navicat MySQL</code></p>
-<p>目标MySQL不允许外连，但可以上传PHP脚本，这时候可以用<code>Navicat</code>自带的<code>tunnel</code>隧道脚本上传到目标网站</p>
-<p>具体操作主播也不太会，大家去看大佬的教程：</p>
-<p><a target="_blank" rel="noopener" href="https://www.sqlsec.com/2020/11/mysql.html">https://www.sqlsec.com/2020/11/mysql.html</a></p>
-<p>快速判断堆叠注入用sleep。</p>
-
+    
+    <a class="article-more-a" href="/2025/07/23/MySQL%E6%8F%90%E6%9D%83/#more">more >></a>
+    
     
 
     
