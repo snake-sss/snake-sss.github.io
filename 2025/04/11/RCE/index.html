@@ -10,15 +10,15 @@
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="RCErce漏洞：在web应用开发中为了灵活性、简洁性等会让应用调用代码执行函数或系统命令执行函数处理，若应用对用户的输入过滤不严，容易产生远程代码执行漏洞或命令执行漏洞； 常见RCE漏洞函数远程命令执行（ping）函数：system()：将字符串作为OS命令执行，返回执行结果； 语法为system(string $command, int &amp;$return var &#x3D; ?)，comman">
+  <meta name="description" content="RCE(远程代码执行)rce漏洞：在web应用开发中为了灵活性、简洁性等会让应用调用代码执行函数或系统命令执行函数处理，若应用对用户的输入过滤不严，容易产生远程代码执行漏洞或命令执行漏洞； 常见RCE漏洞函数远程命令执行（ping）函数：system()：将字符串作为OS命令执行，返回执行结果； 语法为system(string $command, int &amp;$return var &#x3D; ?">
 <meta property="og:type" content="article">
 <meta property="og:title" content="RCE">
 <meta property="og:url" content="http://example.com/2025/04/11/RCE/index.html">
 <meta property="og:site_name" content="佘雅晴のblog">
-<meta property="og:description" content="RCErce漏洞：在web应用开发中为了灵活性、简洁性等会让应用调用代码执行函数或系统命令执行函数处理，若应用对用户的输入过滤不严，容易产生远程代码执行漏洞或命令执行漏洞； 常见RCE漏洞函数远程命令执行（ping）函数：system()：将字符串作为OS命令执行，返回执行结果； 语法为system(string $command, int &amp;$return var &#x3D; ?)，comman">
+<meta property="og:description" content="RCE(远程代码执行)rce漏洞：在web应用开发中为了灵活性、简洁性等会让应用调用代码执行函数或系统命令执行函数处理，若应用对用户的输入过滤不严，容易产生远程代码执行漏洞或命令执行漏洞； 常见RCE漏洞函数远程命令执行（ping）函数：system()：将字符串作为OS命令执行，返回执行结果； 语法为system(string $command, int &amp;$return var &#x3D; ?">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-04-11T08:42:57.000Z">
-<meta property="article:modified_time" content="2025-04-11T09:35:41.501Z">
+<meta property="article:modified_time" content="2025-07-15T03:36:46.849Z">
 <meta property="article:author" content="snake&#39;blog">
 <meta name="twitter:card" content="summary">
   
@@ -59,7 +59,7 @@
       
 
 
-<div class="overlay" style="background: #b2aec6;"></div>
+<div class="overlay" style="background: #4d4d4d;background: url('/img/background1.jpg') no-repeat ;"></div>
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
@@ -136,7 +136,7 @@
       
       
 <nav id="mobile-nav">
-  	<div class="overlay js-overlay" style="background: #b2aec6"></div>
+  	<div class="overlay js-overlay" style="background: #4d4d4d"></div>
 	<div class="btnctn js-mobile-btnctn">
   		<div class="slider-trigger list" q-on="click: openSlider(e)"><i class="icon icon-sort"></i></div>
 	</div>
@@ -244,7 +244,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">403字</span>
+      <span class="post-count">529字</span>
     </span>
   </span>
 
@@ -253,7 +253,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">1分</span>
+      <span class="post-count">2分</span>
     </span>
   </span>
 </div>
@@ -264,16 +264,16 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <h1 id="RCE"><a href="#RCE" class="headerlink" title="RCE"></a>RCE</h1><h4 id="rce漏洞："><a href="#rce漏洞：" class="headerlink" title="rce漏洞："></a>rce漏洞：</h4><p>在web应用开发中为了灵活性、简洁性等会让应用调用代码执行函数或系统命令执行函数处理，若应用对用户的输入过滤不严，容易产生远程代码执行漏洞或命令执行漏洞；</p>
+    <h1 id="RCE-远程代码执行"><a href="#RCE-远程代码执行" class="headerlink" title="RCE(远程代码执行)"></a>RCE(远程代码执行)</h1><h4 id="rce漏洞："><a href="#rce漏洞：" class="headerlink" title="rce漏洞："></a>rce漏洞：</h4><p>在web应用开发中为了灵活性、简洁性等会让应用调用代码执行函数或系统命令执行函数处理，若应用对用户的输入过滤不严，容易产生远程代码执行漏洞或命令执行漏洞；</p>
 <h2 id="常见RCE漏洞函数"><a href="#常见RCE漏洞函数" class="headerlink" title="常见RCE漏洞函数"></a>常见RCE漏洞函数</h2><h3 id="远程命令执行（ping）函数："><a href="#远程命令执行（ping）函数：" class="headerlink" title="远程命令执行（ping）函数："></a>远程命令执行（ping）函数：</h3><p><strong>system()：将字符串作为OS命令执行，返回执行结果；</strong></p>
 <p>语法为<code>system(string $command, int &amp;$return var = ?)</code>，command: 执行 command 参数所指定的命令常用参数并且输出执行结果，如果提供 return var 参数，则外部命令执行后的返回状态将会被设置到此变量中。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">示例：system(&#x27;Is&#x27;)直接返回当前文件下的目录</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">示例：system(&#x27;ls&#x27;)直接返回当前文件下的目录</span><br></pre></td></tr></table></figure>
 
 <p>exec()：将字符串作为OS命令执行，只返回执行结果的最后一行（约等于无回显；</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">示例：exec(&quot;cat/flag&quot;) 无回显</span><br></pre></td></tr></table></figure>
 
 <p>shell_exec() &#x2F; 反引号&#96;&#96;：将字符串作为OS命令执行；</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">示例：shell_exec(Is) / `Is` 无回显，用echo/print输出结果</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">示例：shell_exec(ls) / `ls` 无回显，用echo/print输出结果</span><br></pre></td></tr></table></figure>
 
 <p>passthru()：将字符串作为OS命令执行，能回显，system()平替；</p>
 <p>pcntl_exec()：在当前进程空间执行指定程序；</p>
@@ -283,6 +283,16 @@
 <p>create_function()：主要创建匿名函数；</p>
 <p>call_user_func()：回调函数，第一个参数为函数名，第二个参数为函数参数；</p>
 <p>call_user_func_array()：回调函数，第一个参数为函数名，第二个参数为函数参数的数组；</p>
+<h3 id="assert-GET-s-等价于eval-GET-s-能执行任意php代码"><a href="#assert-GET-s-等价于eval-GET-s-能执行任意php代码" class="headerlink" title="assert($_GET[&#39;s&#39;]);等价于eval($_GET[&#39;s&#39;]),能执行任意php代码"></a><code>assert($_GET[&#39;s&#39;]);等价于eval($_GET[&#39;s&#39;]),能执行任意php代码</code></h3><p>例：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$poc</span> = <span class="string">&quot;a#s#s#e#r#t&quot;</span>; <span class="comment">// 拼的是 assert()</span></span><br><span class="line"><span class="variable">$poc_1</span> = <span class="title function_ invoke__">explode</span>(<span class="string">&quot;#&quot;</span>, <span class="variable">$poc</span>); </span><br><span class="line"><span class="variable">$poc_2</span> = <span class="variable">$poc_1</span>[<span class="number">0</span>].<span class="variable">$poc_1</span>[<span class="number">1</span>].<span class="variable">$poc_1</span>[<span class="number">2</span>].<span class="variable">$poc_1</span>[<span class="number">3</span>].<span class="variable">$poc_1</span>[<span class="number">4</span>].<span class="variable">$poc_1</span>[<span class="number">5</span>]; <span class="comment">// &quot;assert&quot;</span></span><br><span class="line"><span class="variable">$poc_2</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;s&#x27;</span>]); <span class="comment">// 即 assert($_GET[&#x27;s&#x27;]);</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>用#和explode断开再拼接assert，绕过WAF和代码审计检测</strong></p>
+<p>然后如果访问这个php界面：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://victim.com/vuln.php?s=system(&#x27;ls&#x27;);</span><br></pre></td></tr></table></figure>
+
+<p>结果等价于：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_ invoke__">assert</span>(<span class="string">&quot;system(&#x27;ls&#x27;);&quot;</span>);</span><br></pre></td></tr></table></figure>
+
 
     
 

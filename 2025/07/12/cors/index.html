@@ -20,7 +20,7 @@
 <meta property="og:image" content="http://example.com/pic/6.png">
 <meta property="og:image" content="http://example.com/pic/7.png">
 <meta property="article:published_time" content="2025-07-12T09:46:28.000Z">
-<meta property="article:modified_time" content="2025-07-14T02:01:07.693Z">
+<meta property="article:modified_time" content="2025-07-19T13:00:55.706Z">
 <meta property="article:author" content="snake&#39;blog">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/pic/6.png">
@@ -62,7 +62,7 @@
       
 
 
-<div class="overlay" style="background: #b2aec6;"></div>
+<div class="overlay" style="background: #4d4d4d;background: url('/img/background1.jpg') no-repeat ;"></div>
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
@@ -139,7 +139,7 @@
       
       
 <nav id="mobile-nav">
-  	<div class="overlay js-overlay" style="background: #b2aec6"></div>
+  	<div class="overlay js-overlay" style="background: #4d4d4d"></div>
 	<div class="btnctn js-mobile-btnctn">
   		<div class="slider-trigger list" q-on="click: openSlider(e)"><i class="icon icon-sort"></i></div>
 	</div>
@@ -273,7 +273,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 请求头</span><br><span class="line">Origin: https://evil.com</span><br><span class="line"></span><br><span class="line">// 响应头</span><br><span class="line">Access-Control-Allow-Origin: https://evil.com</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>CORS 漏洞的核心在于<strong>服务器错误地信任了不应信任的 Origin</strong>，从而导致敏感信息泄露或权限操作被越权。</p>
-<h3 id="常见成因"><a href="#常见成因" class="headerlink" title="常见成因"></a>常见成因</h3><h5 id="1-任意Origin允许"><a href="#1-任意Origin允许" class="headerlink" title="1.任意Origin允许"></a>1.任意Origin允许</h5><p>有一个接口返回<code>Access-Control-Allow-Origin: *</code>但返回的是敏感信息(如用户信息，token等)</p>
+<h3 id="常见成因"><a href="#常见成因" class="headerlink" title="常见成因"></a>常见成因</h3><h5 id="1-任意Origin允许"><a href="#1-任意Origin允许" class="headerlink" title="1.任意Origin允许"></a>1.任意Origin允许</h5><p>有一个接口返回<code>Access-Control-Allow-Origin: *</code>但返回的是敏感信息(如用户信息，token等)（*表示允许任何来源的请求</p>
 <h5 id="2-搭配Access-Control-Allow-Credentials-true泄露Cookie"><a href="#2-搭配Access-Control-Allow-Credentials-true泄露Cookie" class="headerlink" title="2.搭配Access-Control-Allow-Credentials: true泄露Cookie"></a>2.搭配<code>Access-Control-Allow-Credentials: true</code>泄露Cookie</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Access-Control-Allow-Origin: https://evil.com</span><br><span class="line">Access-Control-Allow-Credentials: true</span><br></pre></td></tr></table></figure>
 
 <p>这表示服务器允许携带 cookie 的跨域请求，<strong>一旦 Origin 是攻击者控制的域名，就可能借助受害者的 cookie 获取其权限下的敏感数据。</strong></p>

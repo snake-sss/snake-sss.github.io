@@ -6,15 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2025/2 | 佘雅晴のblog</title>
+  <title>反序列化 | 佘雅晴のblog</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta property="og:type" content="website">
-<meta property="og:title" content="佘雅晴のblog">
-<meta property="og:url" content="http://example.com/archives/2025/02/index.html">
+  <meta name="description" content="反序列化漏洞基本原理**序列化：**把对象转换为字节序列的过程，即把对象转换为可存储或传输的数据的过程。例如将内存中的对象转换为二进制数据流或文件，在网络传输的过程中，可以是字节或XML等格式。 反序列化：把字节序列恢复为对象的过程，即把可以存储或传输的数据转换为对象的过程。例如将二进制数据流或文件加载到内存中还原为对象。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="反序列化">
+<meta property="og:url" content="http://example.com/2025/07/18/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/index.html">
 <meta property="og:site_name" content="佘雅晴のblog">
+<meta property="og:description" content="反序列化漏洞基本原理**序列化：**把对象转换为字节序列的过程，即把对象转换为可存储或传输的数据的过程。例如将内存中的对象转换为二进制数据流或文件，在网络传输的过程中，可以是字节或XML等格式。 反序列化：把字节序列恢复为对象的过程，即把可以存储或传输的数据转换为对象的过程。例如将二进制数据流或文件加载到内存中还原为对象。">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-07-18T09:46:28.000Z">
+<meta property="article:modified_time" content="2025-08-17T15:18:07.675Z">
 <meta property="article:author" content="snake&#39;blog">
 <meta name="twitter:card" content="summary">
   
@@ -207,86 +211,279 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-反序列化漏洞" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2025" class="archive-year">2025</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2025/02/12/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" class="archive-article-date">
-        <time datetime="2025-02-12T15:27:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-02-12</time>
-</a>
-
-        </div>
-    	 
+      <header class="article-header">
   
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2025/02/12/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" target="_blank">文件上传</a>
   
+    <h1 class="article-title" itemprop="name">
+      反序列化
     </h1>
   
 
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2025/02/08/php/" class="archive-article-date">
-        <time datetime="2025-02-08T04:30:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-02-08</time>
+  
+        
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+<a href="/2025/07/18/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/" class="archive-article-date">
+        <time datetime="2025-07-18T09:46:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-07-18</time>
 </a>
 
-        </div>
-    	 
   
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2025/02/08/php/" target="_blank">php</a>
   
-    </h1>
-  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">1.5k字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">5分</span>
+    </span>
+  </span>
+</div>
 
 
-        <div class="article-info info-on-right">
-          
-          
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h1 id="反序列化漏洞"><a href="#反序列化漏洞" class="headerlink" title="反序列化漏洞"></a>反序列化漏洞</h1><h2 id="基本原理"><a href="#基本原理" class="headerlink" title="基本原理"></a>基本原理</h2><p>**序列化：**把对象转换为字节序列的过程，即把对象转换为可存储或传输的数据的过程。例如将内存中的对象转换为二进制数据流或文件，在网络传输的过程中，可以是字节或XML等格式。</p>
+<p><strong>反序列化</strong>：把字节序列恢复为对象的过程，即把可以存储或传输的数据转换为对象的过程。例如将二进制数据流或文件加载到内存中还原为对象。</p>
+<span id="more"></span>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+<p>在Python和PHP中，一般通过构造一个包含魔术方法（在发生特定事件或场景时被自动调用的函数，通常是构造函数或析构函数）的类，然后在魔术方法中调用命令执行或代码执行函数，接着实例化这个类的一个对象并将该对象序列化后传递给程序，当程序反序列化该对象时触发魔术方法从而执行命令或代码。在Java中没有魔术方法，但是有反射（reflection）机制：在程序的运行状态中，可以构造任意一个类的对象，可以了解任意一个对象所属的类，可以了解任意一个类的成员变量和方法，可以调用任意一个对象的属性和方法，这种动态获取程序信息以及动态调用对象的功能称为Java语言的反射机制。一般利用反射机制来构造一个执行命令的对象或直接调用一个具有命令执行或代码执行功能的方法实现任意代码执行。</p>
+<h2 id="python反序列化漏洞实验"><a href="#python反序列化漏洞实验" class="headerlink" title="python反序列化漏洞实验"></a>python反序列化漏洞实验</h2><p>以<code>pickle</code>模块为例，假设浏览器传递序列化后的<code>Cookie</code>给服务器保存，服务器经过一些处理后反序列化还原<code>Cookie</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python3</span><br><span class="line">import pickle</span><br><span class="line"># 客户端设置Cookie</span><br><span class="line">set_cookie=&#x27;abcdefasfsaafasf&#x27;</span><br><span class="line"># 序列化后传递</span><br><span class="line">cookie=pickle.dumps(set_cookie)</span><br><span class="line">print(&quot;序列化：&quot;,cookie)</span><br><span class="line"># ...</span><br><span class="line"># 服务器接收到序列化后的Cookie</span><br><span class="line"># 反序列化还原Cookie</span><br><span class="line">new_cookie=pickle.loads(cookie)</span><br><span class="line">print(&quot;反序列化：&quot;,new_cookie)</span><br></pre></td></tr></table></figure>
+
+<p>序列化：<code>pickle.dumps()</code></p>
+<p>反序列化：<code>pickle.loads()</code></p>
+<h2 id="php反序列化漏洞实验"><a href="#php反序列化漏洞实验" class="headerlink" title="php反序列化漏洞实验"></a><code>php</code>反序列化漏洞实验</h2><p><code>PHP</code>中通常使用<code>serialize</code>函数进行序列化，使用<code>unserialize</code>函数进行反序列化。</p>
+<h4 id="serialize函数输出格式"><a href="#serialize函数输出格式" class="headerlink" title="serialize函数输出格式"></a>serialize函数输出格式</h4><blockquote>
+<p>NULL被序列化为：N</p>
+<p>Boolean型数据序列化为：b:1，b:0，分别代表True和False</p>
+<p>Integer型数据序列化为：i:数值</p>
+<p>String型数据序列化为：s:长度:”值”</p>
+<p>对象序列化为：O:类名长度:类名:字段数:字段</p>
+</blockquote>
+<p>输出的数字基本都是代表长度，在构造Payload时需要注意修改长度。</p>
+<p>反序列化一个对象，将会保存对象的所有变量，但是不会保存对象的方法，只会保存类的名字，所以为了<code>unserialize</code>一个对象，这个对象的类必须是已经定义过的。</p>
+<h4 id="pop链"><a href="#pop链" class="headerlink" title="pop链"></a>pop链</h4><p>一串可以被利用的类和方法的调用链，它在反序列化的过程中被调用，从而执行恶意代码</p>
+<p>当攻击者可以将序列化的对象数据发送给服务器（例如通过cookie，POST数据等），并且服务端使用<code>unserialize</code>或<code>ObjectInputStream.readObject()</code>进行反序列化时，如果类中存在魔术方法或钩子函数时就有可能被自动调用。攻击者精心构造对象，使这些方法形成一个调用链，最终导致执行任意代码。</p>
+<h5 id="魔术方法-magic-methods"><a href="#魔术方法-magic-methods" class="headerlink" title="魔术方法(magic methods)"></a>魔术方法(magic methods)</h5><p><code>php</code>,<code>python</code>,<code>java</code>等语言中定义的一些命名特殊的函数，它们在特定时机由系统自动调用。</p>
+<h3 id="📌-PHP-中常见的魔术方法（方法名前后有-）："><a href="#📌-PHP-中常见的魔术方法（方法名前后有-）：" class="headerlink" title="📌 PHP 中常见的魔术方法（方法名前后有 __）："></a>📌 <code>PHP</code> 中常见的魔术方法（方法名前后有 <code>__</code>）：</h3><table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>触发时机</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>__construct()</code></td>
+<td>创建对象时自动调用</td>
+</tr>
+<tr>
+<td><code>__destruct()</code></td>
+<td>对象销毁（生命周期结束）时调用</td>
+</tr>
+<tr>
+<td><code>__wakeup()</code></td>
+<td>反序列化时调用 <code>unserialize()</code></td>
+</tr>
+<tr>
+<td><code>__sleep()</code></td>
+<td>序列化时调用 <code>serialize()</code></td>
+</tr>
+<tr>
+<td><code>__call()</code></td>
+<td>调用不存在的方法时触发</td>
+</tr>
+<tr>
+<td><code>__callStatic()</code></td>
+<td>静态方式调用不存在的方法时触发</td>
+</tr>
+<tr>
+<td><code>__get()</code></td>
+<td>读取未定义属性时触发</td>
+</tr>
+<tr>
+<td><code>__set()</code></td>
+<td>写入未定义属性时触发</td>
+</tr>
+<tr>
+<td><code>__toString()</code></td>
+<td>当对象被转换为字符串时触发</td>
+</tr>
+<tr>
+<td><code>__invoke()</code></td>
+<td>当对象被当作函数调用时触发</td>
+</tr>
+<tr>
+<td><code>__isset()</code></td>
+<td>使用 <code>isset()</code> 判断属性是否存在时触发</td>
+</tr>
+<tr>
+<td><code>__unset()</code></td>
+<td>使用 <code>unset()</code> 删除属性时触发</td>
+</tr>
+</tbody></table>
+<p>举个例子：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Demo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__toString</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Hello from __toString!&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$obj</span> = <span class="keyword">new</span> <span class="title class_">Demo</span>();</span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$obj</span>;  <span class="comment">// 自动调用 __toString()</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h5 id="钩子函数-hook-functions"><a href="#钩子函数-hook-functions" class="headerlink" title="钩子函数(hook functions)"></a>钩子函数(hook functions)</h5><p>在程序运行时，某些特定事件发生时自动调用的函数，可以挂载一些自定义逻辑，钩子是<strong>程序运行中的挂钩点</strong>，可以将自己的代码挂上去，在某时刻自动运行。</p>
+<p>在实际框架中常见：</p>
+<ul>
+<li><code>WordPress</code> 的 <code>add_action(&#39;init&#39;, &#39;myFunc&#39;)</code></li>
+<li><code>JavaScript</code> 中的事件监听器 <code>element.addEventListener(...)</code></li>
+<li><code>Python</code> 中的 <code>Django signals</code></li>
+</ul>
+<h2 id="java反序列化漏洞实验"><a href="#java反序列化漏洞实验" class="headerlink" title="java反序列化漏洞实验"></a><code>java</code>反序列化漏洞实验</h2><p>Java中通常使用<code>Java.io.ObjectOutputStream</code>类中的<code>writeObject</code>方法进行序列化，<code>Java.io.ObjectInputStream</code>进行反序列化。</p>
+<p>使用以下代码进行序列化与反序列化：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">package com.company;</span><br><span class="line"></span><br><span class="line">import java.io.ObjectOutputStream;</span><br><span class="line">import java.io.ObjectInputStream;</span><br><span class="line">import java.io.FileOutputStream;</span><br><span class="line">import java.io.FileInputStream;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public class Main&#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String args[]) throws Exception &#123;</span><br><span class="line">        String obj = &quot;hello&quot;;</span><br><span class="line"></span><br><span class="line">        // 将序列化后的数据写入文件a.ser中，当序列化一个对象到文件时， 按照 Java 的标准约定是给文件一个 .ser 扩展名</span><br><span class="line">        FileOutputStream fos = new FileOutputStream(&quot;a.ser&quot;);</span><br><span class="line">        ObjectOutputStream os = new ObjectOutputStream(fos);</span><br><span class="line">        os.writeObject(obj);</span><br><span class="line">        os.close();</span><br><span class="line"></span><br><span class="line">        // 从文件a.ser中读取数据</span><br><span class="line">        FileInputStream fis = new FileInputStream(&quot;a.ser&quot;);</span><br><span class="line">        ObjectInputStream ois = new ObjectInputStream(fis);</span><br><span class="line"></span><br><span class="line">        // 通过反序列化恢复字符串</span><br><span class="line">        String obj2 = (String)ois.readObject();</span><br><span class="line">        System.out.println(obj2);</span><br><span class="line">        ois.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>程序生成后执行a.ser文件。</p>
+<p>一个Java类的对象想要序列化成功必须满足两个条件：</p>
+<ol>
+<li>该类必须实现<code>java.io.Serializable</code>接口。</li>
+<li>该类的所有属性必须是可以序列化的，只要有一个不能序列化，则该属性必须注明是短暂的。</li>
+</ol>
 
     
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+
+    
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2025/07/18/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+
+<nav id="article-nav">
+  
+    <a href="/2025/07/21/comments/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          留言板
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/07/17/awd/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">awd</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
           </div>
@@ -327,8 +524,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,

